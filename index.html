@@ -1,120 +1,519 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="ZIYARAT AJMER - Ziyarat packages, hotel, taxi, outstation ziyarat and Ajmer gift hampers. A ZUNAIRA Initiative.">
-<title>ZIYARAT AJMER | A ZUNAIRA Initiative</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#064b38">
+<title>Ajmer Ziyarat | Your Complete Ziyarat & Travel Partner</title>
 <style>
-:root{--green:#0c4b3c;--green2:#176b54;--gold:#c9a34a;--cream:#fbf8ef;--ink:#24312c;--muted:#68746e;--white:#fff;--line:#e8e2d3;--shadow:0 12px 35px rgba(16,55,43,.10)}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:#fff;line-height:1.6}
-a{color:inherit;text-decoration:none}.wrap{width:min(1120px,92%);margin:auto}
-header{background:var(--green);color:#fff;position:sticky;top:0;z-index:10;box-shadow:0 4px 18px #0002}
-.nav{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{font-weight:850;letter-spacing:1.2px;font-size:1.18rem}.brand small{display:block;font-size:.65rem;letter-spacing:2px;color:#e8d49b;font-weight:600}
-nav{display:flex;gap:18px;align-items:center;font-size:.92rem}nav a:hover{color:#f1d58e}.navbtn,.btn{display:inline-block;border:0;border-radius:999px;padding:11px 18px;background:var(--gold);color:#1e2b25;font-weight:750;cursor:pointer}
-.menu{display:none;background:transparent;border:1px solid #ffffff66;color:white;border-radius:8px;padding:7px 10px}
-.hero{background:linear-gradient(110deg,rgba(5,48,38,.93),rgba(9,66,51,.78)),url('https://images.unsplash.com/photo-1561361513-2d000a50f0dc?auto=format&fit=crop&w=1800&q=85') center/cover;color:white;padding:88px 0 78px}
-.hero h1{font-size:clamp(2.3rem,6vw,4.4rem);line-height:1.08;margin:0 0 16px;max-width:760px}.hero p{max-width:650px;color:#f4f0e6;font-size:1.1rem}.eyebrow{color:#efd58f;text-transform:uppercase;letter-spacing:2px;font-size:.78rem;font-weight:800}
-.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}.btn.outline{background:transparent;border:1px solid #ffffff99;color:white}
-section{padding:66px 0}.soft{background:var(--cream)}.section-head{text-align:center;max-width:720px;margin:0 auto 34px}.section-head h2{color:var(--green);font-size:clamp(1.8rem,4vw,2.5rem);margin:5px 0}.section-head p{color:var(--muted);margin:0}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.card{background:white;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow)}.card-body{padding:21px}.card h3{color:var(--green);margin:0 0 8px}.card p{color:var(--muted);margin:0 0 14px}.tag{display:inline-block;background:#f5eedb;color:#6c541d;border-radius:999px;padding:5px 10px;font-size:.78rem;font-weight:750}.feature-list{padding-left:19px;margin:12px 0;color:#45534c}.feature-list li{margin:5px 0}.price{font-size:1.15rem;font-weight:800;color:var(--green);margin:12px 0}.card .btn{margin-top:5px}
-.destinations{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.destination{border-radius:16px;padding:22px 16px;background:white;border:1px solid var(--line);box-shadow:var(--shadow)}.destination .num{color:var(--gold);font-weight:900;font-size:1.3rem}.destination h3{margin:6px 0;color:var(--green)}
-.hampers{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.hamper{background:#fff;border:1px solid var(--line);padding:20px;border-radius:16px;text-align:center}.hamper .emoji{font-size:2rem}.hamper h3{margin:8px 0 2px;color:var(--green)}.note{font-size:.9rem;color:var(--muted)}
-.booking{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}.panel{background:#fff;border:1px solid var(--line);padding:24px;border-radius:18px;box-shadow:var(--shadow)}label{display:block;font-weight:700;margin:12px 0 5px}input,select,textarea{width:100%;padding:12px;border:1px solid #d8d5ca;border-radius:10px;font:inherit;background:white}textarea{min-height:90px;resize:vertical}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.hint{font-size:.84rem;color:var(--muted)}
-footer{background:#092f27;color:#e8eee9;padding:34px 0}footer .foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}footer small{color:#c3d0ca}
-.admin{background:#f5f7f5;border-top:1px solid var(--line)}.admin details{max-width:900px;margin:auto;background:white;border:1px solid var(--line);border-radius:14px;padding:18px}.admin summary{font-weight:800;color:var(--green);cursor:pointer}.admin-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:15px}.admin-box{border:1px solid var(--line);padding:16px;border-radius:12px}.admin-box h3{margin-top:0;color:var(--green)}.admin-box button{margin-top:10px}.admin-list{padding-left:20px}.danger{background:#f3dddd;color:#8a2525}.status{padding:10px;border-radius:8px;background:#fff7df;color:#70551c;font-size:.85rem;margin-top:12px}
-@media(max-width:800px){nav{display:none;position:absolute;top:72px;left:0;right:0;background:var(--green);padding:18px;flex-direction:column;align-items:flex-start}.menu{display:block}.grid{grid-template-columns:1fr 1fr}.destinations,.hampers{grid-template-columns:1fr 1fr}.booking{grid-template-columns:1fr}}
-@media(max-width:520px){.grid,.destinations,.hampers,.form-grid,.admin-grid{grid-template-columns:1fr}.hero{padding:65px 0}.nav{min-height:66px}}
+:root {
+  --green-dark: #043628;
+  --green: #064b38;
+  --green-light: #0b6b4c;
+  --gold: #f0c44d;
+  --gold-hover: #ffd460;
+  --cream: #fcfaf3;
+  --ink: #162e24;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--cream); color: var(--ink); line-height: 1.5; }
+
+/* Header & Navigation */
+header {
+  background: var(--green);
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  border-bottom: 1px solid rgba(240, 196, 77, 0.25);
+}
+.nav-wrap {
+  max-width: 1200px;
+  margin: auto;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--gold);
+  font-weight: 800;
+  font-size: 20px;
+  letter-spacing: 0.8px;
+  line-height: 1.1;
+}
+.logo span { display: block; font-size: 13px; color: #fff; font-weight: 600; letter-spacing: 2px; }
+nav { display: flex; align-items: center; gap: 20px; }
+nav a {
+  color: #f4f7f5;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: 0.2s;
+}
+nav a.active { background: var(--gold); color: var(--green-dark); font-weight: 700; }
+nav a:hover:not(.active) { color: var(--gold); }
+
+.header-right { display: flex; align-items: center; gap: 14px; }
+.wa-top {
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.wa-icon {
+  background: #25D366;
+  color: #fff;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: inline-grid;
+  place-items: center;
+  font-size: 13px;
+}
+.btn-gold {
+  background: var(--gold);
+  color: var(--green-dark);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 14px;
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: 0.2s;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+.btn-gold:hover { background: var(--gold-hover); transform: translateY(-1px); }
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(95deg, rgba(4, 42, 31, 0.94) 35%, rgba(6, 75, 56, 0.45) 100%),
+              url('https://images.unsplash.com/photo-1561361513-2d000a50f0dc?auto=format&fit=crop&w=1800&q=85') center/cover no-repeat;
+  color: #fff;
+  padding: 75px 20px 135px;
+}
+.hero-inner { max-width: 1200px; margin: auto; }
+.hero h2 { font-size: 26px; font-weight: 600; color: #fff; margin-bottom: 2px; }
+.hero h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(40px, 6vw, 66px);
+  color: var(--gold);
+  line-height: 1.05;
+  margin-bottom: 14px;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.4);
+}
+.hero p { font-size: 20px; font-weight: 500; margin-bottom: 22px; color: #f3f6f4; }
+.checklist {
+  display: grid;
+  grid-template-columns: repeat(2, max-content);
+  gap: 10px 32px;
+  margin-bottom: 28px;
+  font-size: 16px;
+}
+.checklist div { display: flex; align-items: center; gap: 8px; }
+.check-badge {
+  background: var(--gold);
+  color: var(--green-dark);
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: inline-grid;
+  place-items: center;
+  font-size: 11px;
+  font-weight: 900;
+}
+
+/* 4 Service Cards Overlapping Hero */
+.cards-section { max-width: 1200px; margin: -95px auto 0; padding: 0 20px; position: relative; z-index: 10; }
+.service-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.s-card {
+  background: #fff;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(4, 54, 40, 0.14);
+  border: 2px solid #fff;
+  cursor: pointer;
+  transition: 0.25s;
+}
+.s-card:hover { transform: translateY(-5px); border-color: var(--gold); }
+.s-card img { width: 100%; height: 145px; object-fit: cover; display: block; }
+.s-card-bar {
+  background: var(--green);
+  color: #fff;
+  text-align: center;
+  padding: 12px 10px;
+}
+.s-card-bar h3 { color: var(--gold); font-size: 17px; margin-bottom: 2px; }
+.s-card-bar p { font-size: 12px; color: #e2ece8; }
+
+/* 4 Trust Features Strip */
+.trust-strip {
+  max-width: 1200px;
+  margin: 24px auto 40px;
+  padding: 0 20px;
+}
+.trust-box {
+  background: #fff;
+  border-radius: 14px;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  border: 1px solid #e7e4d8;
+}
+.trust-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  border-right: 1px solid #e5e8e6;
+  padding: 6px 10px;
+}
+.trust-item:last-child { border-right: none; }
+.trust-icon { font-size: 26px; color: var(--green); }
+.trust-item b { display: block; font-size: 14px; color: var(--ink); }
+.trust-item small { font-size: 12px; color: #5f7068; }
+
+/* Extra Services (Taxi & Support) */
+.section { max-width: 1200px; margin: auto; padding: 45px 20px; }
+.sec-head { text-align: center; margin-bottom: 30px; }
+.sec-head h2 { font-size: 30px; color: var(--green); }
+.sec-head p { color: #5c6d65; margin-top: 5px; }
+
+.more-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.m-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 24px;
+  border: 1px solid #e6e2d3;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.04);
+}
+.m-card h3 { color: var(--green); margin: 10px 0 8px; }
+.m-card p { font-size: 14px; color: #596961; margin-bottom: 16px; }
+
+/* Booking Form */
+.booking-wrap {
+  background: #fff;
+  max-width: 820px;
+  margin: auto;
+  padding: 32px;
+  border-radius: 18px;
+  border: 1px solid #e4dfc9;
+  box-shadow: 0 8px 30px rgba(6, 75, 56, 0.08);
+}
+form { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+label { font-size: 13px; font-weight: 700; color: var(--green-dark); }
+input, select, textarea {
+  width: 100%;
+  padding: 12px;
+  margin-top: 6px;
+  border: 1px solid #cfd8d3;
+  border-radius: 10px;
+  font: inherit;
+}
+.full { grid-column: 1 / -1; }
+.btn-wa {
+  background: #25D366;
+  color: #fff;
+  border: none;
+  padding: 12px 22px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 14px;
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Bottom Features Banner */
+.bottom-strip {
+  background: #f1efe4;
+  border-top: 1px solid #e2dcc6;
+  padding: 30px 20px;
+  margin-top: 40px;
+}
+.b-grid {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 14px;
+  text-align: center;
+}
+.b-item { font-size: 13px; font-weight: 700; color: var(--green-dark); }
+.b-circle {
+  width: 46px;
+  height: 46px;
+  background: var(--green);
+  color: var(--gold);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 8px;
+  font-size: 20px;
+}
+
+/* Footer */
+footer {
+  background: var(--green-dark);
+  color: #e6ede9;
+  padding: 36px 20px;
+  text-align: center;
+}
+.footer-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 28px;
+  flex-wrap: wrap;
+  margin: 16px 0;
+}
+.footer-phone {
+  background: var(--green);
+  border: 1px solid var(--gold);
+  color: #fff;
+  padding: 10px 22px;
+  border-radius: 999px;
+  font-size: 18px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+@media (max-width: 960px) {
+  nav, .wa-top { display: none; }
+  .service-grid { grid-template-columns: 1fr 1fr; }
+  .trust-box { grid-template-columns: 1fr 1fr; }
+  .trust-item { border-right: none; justify-content: flex-start; }
+  .more-grid { grid-template-columns: 1fr; }
+  .b-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 560px) {
+  .service-grid { grid-template-columns: 1fr; }
+  .trust-box { grid-template-columns: 1fr; }
+  .checklist { grid-template-columns: 1fr; }
+  form { grid-template-columns: 1fr; }
+  .b-grid { grid-template-columns: 1fr 1fr; }
+}
 </style>
 </head>
 <body>
-<header><div class="wrap nav">
-<a class="brand" href="#">ZIYARAT AJMER<small>A ZUNAIRA INITIATIVE</small></a>
-<button class="menu" onclick="document.querySelector('nav').style.display=document.querySelector('nav').style.display==='flex'?'none':'flex'">Menu ☰</button>
-<nav><a href="#packages">Packages</a><a href="#outstation">Outstation Ziyarat</a><a href="#hamper">Gift Hamper</a><a href="#booking">Booking Enquiry</a></nav>
-</div></header>
-<main>
-<section class="hero"><div class="wrap">
-<div class="eyebrow">Your Complete Ziyarat & Travel Partner</div>
-<h1>Ajmer Ziyarat,<br>made convenient.</h1>
-<p>ज़ियारत पैकेज, होटल, टैक्सी, आउटस्टेशन ज़ियारत और अजमेर का खास Gift Hamper — अपनी यात्रा की जानकारी भेजें और हमारी टीम से संपर्क करें।</p>
-<div class="hero-actions"><a class="btn" href="#booking">Booking Enquiry</a><a class="btn outline" href="#packages">Explore Packages</a></div>
-</div></section>
 
-<section id="packages"><div class="wrap">
-<div class="section-head"><div class="eyebrow">Choose your experience</div><h2>Our Ziyarat Packages</h2><p>तीनों पैकेज में ज़ियारत, होटल और टैक्सी की सुविधा शामिल होगी। सुविधाओं का स्तर और कीमत Admin द्वारा तय की जाएगी। भोजन पैकेज में शामिल नहीं है।</p></div>
-<div class="grid" id="packageCards"></div>
-<p class="note" style="text-align:center;margin-top:18px">ग्रुप बुकिंग: सदस्यों की संख्या के अनुसार अंतिम कीमत और व्यवस्था की पुष्टि की जाएगी।</p>
-</div></section>
+<header>
+  <div class="nav-wrap">
+    <a href="#" class="logo">
+      🕌 <div>AJMER<span>ZIYARAT</span></div>
+    </a>
+    <nav>
+      <a href="#" class="active">Home</a>
+      <a href="#services">Ziyarat Packages ▾</a>
+      <a href="#services">Hotels ▾</a>
+      <a href="#services">Products ▾</a>
+      <a href="#more">Taxi & Travel ▾</a>
+      <a href="#about">About Us</a>
+      <a href="#booking">Contact Us</a>
+    </nav>
+    <div class="header-right">
+      <a href="https://wa.me/919667951217" target="_blank" class="wa-top">
+        <span class="wa-icon">💬</span> +91 9667951217
+      </a>
+      <a href="#booking" class="btn-gold">Book Now</a>
+    </div>
+  </div>
+</header>
 
-<section class="soft" id="outstation"><div class="wrap">
-<div class="section-head"><div class="eyebrow">Explore nearby destinations</div><h2>Outstation Ziyarat</h2><p>अजमेर के बाहर ज़ियारत और यात्रा के लिए उपलब्ध स्थान। नए स्थान Admin द्वारा जोड़े जा सकते हैं।</p></div>
-<div class="destinations" id="destinationCards"></div>
-</div></section>
+<section class="hero">
+  <div class="hero-inner">
+    <h2>Welcome to</h2>
+    <h1>Ajmer Sharif</h1>
+    <p>Plan Your Journey with Ease...</p>
+    <div class="checklist">
+      <div><span class="check-badge">✓</span> Ziyarat Package</div>
+      <div><span class="check-badge">✓</span> Hotel Booking</div>
+      <div><span class="check-badge">✓</span> Sohan Halwa</div>
+      <div><span class="check-badge">✓</span> Loban</div>
+    </div>
+    <a href="#booking" class="btn-gold" style="padding: 13px 28px; font-size: 16px;">Book Now →</a>
+  </div>
+</section>
 
-<section id="hamper"><div class="wrap">
-<div class="section-head"><div class="eyebrow">A thoughtful Ajmer gift</div><h2>ZIYARAT AJMER Gift Hamper</h2><p>पैकेज के साथ Gift Hamper का विकल्प और अलग से खरीदने की सुविधा। सामग्री और मात्रा पैकेज के अनुसार तय होगी।</p></div>
-<div class="hampers">
-<div class="hamper"><div class="emoji">🍬</div><h3>Sohan Halwa</h3><div class="note">अजमेर का प्रसिद्ध मीठा</div></div>
-<div class="hamper"><div class="emoji">🪔</div><h3>Loban</h3><div class="note">लोबान</div></div>
-<div class="hamper"><div class="emoji">🧴</div><h3>Itr</h3><div class="note">इत्र</div></div>
-<div class="hamper"><div class="emoji">🎁</div><h3>Tabarruk</h3><div class="note">तबर्रुक</div></div>
+<section class="cards-section" id="services">
+  <div class="service-grid">
+    <div class="s-card" onclick="selectService('Ziyarat Package')">
+      <img src="https://images.unsplash.com/photo-1609948543911-7f01ff385be2?auto=format&fit=crop&w=700&q=80" alt="Ziyarat Package">
+      <div class="s-card-bar">
+        <h3>Ziyarat Package</h3>
+        <p>Complete Dargah Tour</p>
+      </div>
+    </div>
+    <div class="s-card" onclick="selectService('Hotel Booking')">
+      <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=700&q=80" alt="Hotel Booking">
+      <div class="s-card-bar">
+        <h3>Hotel Booking</h3>
+        <p>Stay in Comfort</p>
+      </div>
+    </div>
+    <div class="s-card" onclick="selectService('Sohan Halwa')">
+      <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=700&q=80" alt="Sohan Halwa">
+      <div class="s-card-bar">
+        <h3>Sohan Halwa</h3>
+        <p>Taste the Tradition</p>
+      </div>
+    </div>
+    <div class="s-card" onclick="selectService('Loban & Religious Items')">
+      <img src="https://images.unsplash.com/photo-1603006905003-be475563bc59?auto=format&fit=crop&w=700&q=80" alt="Loban & Items">
+      <div class="s-card-bar">
+        <h3>Loban & Items</h3>
+        <p>Pure & Authentic</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="trust-strip">
+  <div class="trust-box">
+    <div class="trust-item">
+      <span class="trust-icon">✈️</span>
+      <div><b>Easy Booking</b><small>Worldwide</small></div>
+    </div>
+    <div class="trust-item">
+      <span class="trust-icon">🛡️</span>
+      <div><b>Secure Payment</b><small>100% Safe</small></div>
+    </div>
+    <div class="trust-item">
+      <span class="trust-icon">🎧</span>
+      <div><b>24x7 Support</b><small>Anytime</small></div>
+    </div>
+    <div class="trust-item">
+      <span class="trust-icon">🌐</span>
+      <div><b>Multi Language</b><small>Hindi & English</small></div>
+    </div>
+  </div>
 </div>
-<div style="text-align:center;margin-top:24px"><a class="btn" href="#booking">Gift Hamper Enquiry</a></div>
-</div></section>
 
-<section class="soft" id="booking"><div class="wrap">
-<div class="section-head"><div class="eyebrow">Plan your visit</div><h2>Booking Enquiry</h2><p>अपनी जानकारी भेजें। पैकेज, ग्रुप साइज और उपलब्धता की पुष्टि हमारी टीम करेगी।</p></div>
-<div class="booking">
-<div class="panel"><h3 style="color:var(--green);margin-top:0">Enquiry Form</h3>
-<form id="enquiryForm">
-<div class="form-grid"><div><label for="name">आपका नाम *</label><input id="name" required placeholder="पूरा नाम"></div><div><label for="phone">मोबाइल / WhatsApp *</label><input id="phone" required type="tel" placeholder="मोबाइल नंबर"></div></div>
-<div class="form-grid"><div><label for="package">पैकेज</label><select id="package"><option>Basic</option><option>Standard</option><option>Premium</option><option>Gift Hamper Only</option><option>Outstation Ziyarat</option></select></div><div><label for="members">ग्रुप में सदस्य</label><input id="members" type="number" min="1" value="2"></div></div>
-<div class="form-grid"><div><label for="date">यात्रा की तारीख</label><input id="date" type="date"></div><div><label for="destination">ज़ियारत स्थल</label><select id="destination"><option>Ajmer Sharif</option><option>Sarwar Sharif</option><option>Sambhar Sharif</option><option>Taragarh</option><option>Pushkar</option><option>Other / Multiple</option></select></div></div>
-<label for="details">अतिरिक्त जानकारी</label><textarea id="details" placeholder="होटल, टैक्सी, कमरे, Gift Hamper या अन्य जरूरत लिखें"></textarea>
-<button class="btn" type="submit">Save Enquiry on This Device</button>
-<p class="hint">यह शुरुआती डेमो फॉर्म है। अभी जानकारी केवल इसी ब्राउज़र/डिवाइस में सेव होती है; टीम को अपने आप नहीं भेजी जाती।</p>
-</form></div>
-<div class="panel"><h3 style="color:var(--green);margin-top:0">How it works</h3>
-<ol><li>पैकेज और ग्रुप सदस्यों की संख्या चुनें।</li><li>यात्रा की तारीख और ज़ियारत स्थल बताएं।</li><li>हमारी टीम उपलब्धता, कमरे, टैक्सी और कुल कीमत की पुष्टि करेगी।</li><li>पुष्टि के बाद ही बुकिंग फाइनल होगी।</li></ol>
-<div class="status"><strong>ध्यान दें:</strong> इस संस्करण में ऑनलाइन भुगतान, वास्तविक बुकिंग पुष्टि और सुरक्षित Admin Login सक्रिय नहीं हैं। इन्हें लाइव करने के लिए सर्वर/बैकएंड और पेमेंट गेटवे जोड़ना होगा।</div>
-</div></div>
-</div></section>
+<section class="section" id="more">
+  <div class="sec-head">
+    <h2>Complete Travel & Ziyarat Assistance</h2>
+    <p>Visit Ajmer... With Complete Care</p>
+  </div>
+  <div class="more-grid">
+    <div class="m-card">
+      <div style="font-size:32px">🚕</div>
+      <h3>Taxi Service in Ajmer</h3>
+      <p>Ajmer Railway Station pickup/drop, Pushkar sightseeing, Taragarh & outstation cab service.</p>
+      <button class="btn-gold" onclick="selectService('Taxi & Travel')">Book Taxi</button>
+    </div>
+    <div class="m-card">
+      <div style="font-size:32px">🎁</div>
+      <h3>Sohan Halwa & Loban Delivery</h3>
+      <p>Order fresh Ajmer Sohan Halwa, pure Loban & religious items delivered anywhere in India & abroad.</p>
+      <button class="btn-gold" onclick="selectService('Sohan Halwa & Loban Delivery')">Order Now</button>
+    </div>
+    <div class="m-card">
+      <div style="font-size:32px">🤝</div>
+      <h3>24x7 Customer Support</h3>
+      <p>Need help planning your family or group Ziyarat? Call or WhatsApp our team directly.</p>
+      <a href="https://wa.me/919667951217" target="_blank" class="btn-wa">💬 +91 9667951217</a>
+    </div>
+  </div>
+</section>
 
-<section class="admin"><div class="wrap" style="padding:35px 0">
-<details><summary>Admin Demo – Packages & Destinations Manage करें</summary>
-<p class="hint">यह केवल इसी ब्राउज़र में चलने वाला डेमो कंट्रोल है। इसमें सुरक्षित लॉगिन या ऑनलाइन डेटाबेस नहीं है। लाइव वेबसाइट पर इसे सुरक्षित सर्वर से जोड़ना जरूरी है।</p>
-<div class="admin-grid">
-<div class="admin-box"><h3>Package Details</h3><label>Package चुनें</label><select id="adminPackage"><option>Basic</option><option>Standard</option><option>Premium</option></select><label>विवरण / सुविधाएँ</label><textarea id="adminFeatures" placeholder="उदाहरण: ज़ियारत, होटल, टैक्सी, गाइड"></textarea><label>दिखाने के लिए कीमत (वैकल्पिक)</label><input id="adminPrice" placeholder="उदाहरण: ग्रुप के अनुसार / Call for price"><button class="btn" id="savePackage">Save Package</button></div>
-<div class="admin-box"><h3>Outstation Destination जोड़ें</h3><label>स्थान का नाम</label><input id="newDestination" placeholder="नया ज़ियारत स्थल"><button class="btn" id="addDestination">Add Destination</button><ul class="admin-list" id="adminDestinationList"></ul></div>
+<section class="section" id="booking">
+  <div class="sec-head">
+    <h2>Book Your Ziyarat / Send Enquiry</h2>
+    <p>Fill details below or connect instantly on WhatsApp</p>
+  </div>
+  <div class="booking-wrap">
+    <form id="enquiryForm" onsubmit="sendEnquiry(event)">
+      <div>
+        <label>Full Name</label>
+        <input type="text" id="custName" required placeholder="Enter your name">
+      </div>
+      <div>
+        <label>Mobile / WhatsApp Number</label>
+        <input type="tel" id="custPhone" required placeholder="+91 XXXXXXXXXX">
+      </div>
+      <div>
+        <label>Select Service</label>
+        <select id="serviceSelect">
+          <option>Ziyarat Package</option>
+          <option>Hotel Booking</option>
+          <option>Sohan Halwa</option>
+          <option>Loban & Religious Items</option>
+          <option>Taxi & Travel</option>
+          <option>Sohan Halwa & Loban Delivery</option>
+        </select>
+      </div>
+      <div>
+        <label>Visit / Delivery Date</label>
+        <input type="date" id="visitDate">
+      </div>
+      <div class="full">
+        <label>Message / Requirements (No. of guests, hotel type, quantity)</label>
+        <textarea id="custMsg" rows="3" placeholder="Write your requirements here..."></textarea>
+      </div>
+      <div class="full" style="display:flex; gap:12px; flex-wrap:wrap;">
+        <button type="submit" class="btn-gold">Send Booking on WhatsApp →</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<div class="bottom-strip" id="about">
+  <div class="b-grid">
+    <div class="b-item"><div class="b-circle">✈️</div>Plan Your Trip Easily</div>
+    <div class="b-item"><div class="b-circle">🛏️</div>Book Hotels Online</div>
+    <div class="b-item"><div class="b-circle">🎁</div>Buy Sohan Halwa & Loban</div>
+    <div class="b-item"><div class="b-circle">🚕</div>Taxi Service in Ajmer</div>
+    <div class="b-item"><div class="b-circle">🛡️</div>Safe & Secure Payments</div>
+    <div class="b-item"><div class="b-circle">🌍</div>Service Across India & Abroad</div>
+  </div>
 </div>
-<div class="admin-box" style="margin-top:16px"><h3>इस डिवाइस की Enquiries</h3><ul class="admin-list" id="enquiryList"></ul><button class="btn danger" id="clearEnquiries">Clear Demo Enquiries</button></div>
-</details>
-</div></section>
-</main>
-<footer><div class="wrap foot"><div><strong>ZIYARAT AJMER</strong><br><small>A ZUNAIRA Initiative</small></div><div><small>Ajmer, Rajasthan, India<br>Website enquiry • Ziyarat • Hotel • Taxi • Gift Hamper</small></div><div><small>© <span id="year"></span> ZUNAIRA. All rights reserved.</small></div></div></footer>
+
+<footer>
+  <h2 style="color: var(--gold); letter-spacing: 1.5px;">AJMER ZIYARAT</h2>
+  <p style="font-size: 14px; margin-top: 4px;">— Your Complete Ziyarat & Travel Partner —</p>
+  <div class="footer-bar">
+    <a href="https://wa.me/919667951217" target="_blank" class="footer-phone">💬 +91 9667951217</a>
+    <span style="font-size: 16px; font-weight: 700;">📍 Ajmer, Rajasthan</span>
+  </div>
+  <p style="font-size: 13px; color: #b7c9c1; margin-top: 10px;">Visit Ajmer... With Complete Care | © 2026 Zunaira Ajmer Ziyarat</p>
+</footer>
+
 <script>
-const defaults={
- packages:[
- {name:"Basic",features:"ज़ियारत, सामान्य होटल व्यवस्था, सामान्य टैक्सी सुविधा",price:"ग्रुप के अनुसार कीमत"},
- {name:"Standard",features:"ज़ियारत, बेहतर होटल व्यवस्था, बेहतर टैक्सी सुविधा, गाइड सुविधा",price:"ग्रुप के अनुसार कीमत"},
- {name:"Premium",features:"ज़ियारत, प्रीमियम होटल व्यवस्था, प्रीमियम टैक्सी सुविधा, विशेष गाइड और प्राथमिकता सपोर्ट",price:"ग्रुप के अनुसार कीमत"}
- ],
- destinations:["Sarwar Sharif","Sambhar Sharif","Taragarh","Pushkar"]
-};
-const get=(k,f)=>{try{return JSON.parse(localStorage.getItem(k))??f}catch{return f}};
-let packages=get("za_packages",defaults.packages), destinations=get("za_destinations",defaults.destinations);
-function renderPackages(){document.getElementById("packageCards").innerHTML=packages.map(p=>`<article class="card"><div class="card-body"><span class="tag">${p.name} PACKAGE</span><h3>${p.name} Package</h3><p>${p.features}</p><div class="price">${p.price||"ग्रुप के अनुसार कीमत"}</div><button class="btn" onclick="choosePackage('${p.name}')">Enquire Now</button></div></article>`).join("")}
-function renderDestinations(){document.getElementById("destinationCards").innerHTML=destinations.map((d,i)=>`<article class="destination"><div class="num">0${i+1}</div><h3>${d}</h3><div class="note">यात्रा की जानकारी और टैक्सी के लिए enquiry करें</div></article>`).join("");document.getElementById("adminDestinationList").innerHTML=destinations.map(d=>`<li>${d}</li>`).join("")}
-function choosePackage(p){document.getElementById("package").value=p;document.getElementById("booking").scrollIntoView({behavior:"smooth"})}
-document.getElementById("year").textContent=new Date().getFullYear();
-renderPackages();renderDestinations();
-document.getElementById("savePackage").onclick=()=>{let n=document.getElementById("adminPackage").value;packages=packages.map(p=>p.name===n?{...p,features:document.getElementById("adminFeatures").value||p.features,price:document.getElementById("adminPrice").value||p.price}:p);localStorage.setItem("za_packages",JSON.stringify(packages));renderPackages();alert("इस डिवाइस पर package details सेव हो गईं।")};
-document.getElementById("adminPackage").onchange=()=>{let p=packages.find(x=>x.name===document.getElementById("adminPackage").value);document.getElementById("adminFeatures").value=p?.features||"";document.getElementById("adminPrice").value=p?.price||""};
-document.getElementById("addDestination").onclick=()=>{let d=document.getElementById("newDestination").value.trim();if(!d)return;destinations.push(d);localStorage.setItem("za_destinations",JSON.stringify(destinations));document.getElementById("newDestination").value="";renderDestinations();alert("Destination इस डिवाइस पर जोड़ दिया गया।")};
-document.getElementById("enquiryForm").onsubmit=e=>{e.preventDefault();let item={name:name.value,phone:phone.value,package:document.getElementById("package").value,members:members.value,date:date.value,destination:destination.value,details:details.value,created:new Date().toLocaleString()};let arr=get("za_enquiries",[]);arr.push(item);localStorage.setItem("za_enquiries",JSON.stringify(arr));renderEnquiries();e.target.reset();alert("Demo enquiry इस डिवाइस पर सेव हो गई। यह अभी वेबसाइट मालिक को नहीं भेजी गई है।")};
-function renderEnquiries(){let a=get("za_enquiries",[]);document.getElementById("enquiryList").innerHTML=a.length?a.map(x=>`<li><strong>${x.name}</strong> — ${x.phone}; ${x.package}; ${x.members} सदस्य; ${x.destination}; ${x.date||"तारीख तय नहीं"} <small>(${x.created})</small></li>`).join(""):"<li>अभी कोई enquiry नहीं है।</li>"}
-document.getElementById("clearEnquiries").onclick=()=>{if(confirm("इस डिवाइस की demo enquiries हटाएँ?")){localStorage.removeItem("za_enquiries");renderEnquiries()}};
-renderEnquiries();
+function selectService(serviceName) {
+  document.getElementById('serviceSelect').value = serviceName;
+  document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
+}
+
+function sendEnquiry(e) {
+  e.preventDefault();
+  const name = document.getElementById('custName').value;
+  const phone = document.getElementById('custPhone').value;
+  const service = document.getElementById('serviceSelect').value;
+  const date = document.getElementById('visitDate').value || 'Not specified';
+  const msg = document.getElementById('custMsg').value || 'Please share details.';
+
+  const text = `Assalam-o-Alaikum *Ajmer Ziyarat*,%0A%0A*New Enquiry:*%0A• *Name:* ${name}%0A• *Phone:* ${phone}%0A• *Service:* ${service}%0A• *Date:* ${date}%0A• *Details:* ${msg}`;
+  window.open(`https://wa.me/919667951217?text=${text}`, '_blank');
+}
 </script>
-</body></html>
+</body>
+</html>

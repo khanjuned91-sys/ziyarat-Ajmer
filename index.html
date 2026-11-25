@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
@@ -63,7 +64,7 @@
 <body class="bg-creamWarm text-slate-800 font-sans antialiased pb-20 md:pb-0">
 
   <!-- Non-Blocking Toast Notification Container -->
-  <div id="toast-container" class="fixed top-5 right-5 z-[110] flex flex-col gap-2 pointer-events-none"></div>
+  <div id="toast-container" class="fixed top-5 right-5 z-[120] flex flex-col gap-2 pointer-events-none"></div>
 
   <!-- TOP BRAND & NAVIGATION HEADER -->
   <header class="sticky top-0 z-50 bg-emeraldDeep text-white shadow-xl border-b border-goldRoyal/25">
@@ -119,25 +120,25 @@
             </a>
 
             <!-- Customize Photos Trigger -->
-            <button onclick="openPhotoModal()" class="flex items-center gap-1.5 px-3 py-1 rounded-full border border-goldRoyal/50 bg-emeraldMid/80 hover:bg-emeraldLight text-white text-xs font-semibold transition">
+            <button type="button" onclick="openPhotoModal()" class="flex items-center gap-1.5 px-3 py-1 rounded-full border border-goldRoyal/50 bg-emeraldMid/80 hover:bg-emeraldLight text-white text-xs font-semibold transition">
               <i class="fa-solid fa-camera text-goldRoyal"></i>
               <span>Customize Photos</span>
             </button>
 
             <!-- Hindi / English Language Toggle -->
-            <button onclick="toggleLanguage()" class="flex items-center gap-1.5 px-3 py-1 rounded-full border border-goldRoyal/60 bg-emeraldMid/80 hover:bg-emeraldLight text-goldRoyal text-xs font-semibold transition">
+            <button type="button" onclick="toggleLanguage()" class="flex items-center gap-1.5 px-3 py-1 rounded-full border border-goldRoyal/60 bg-emeraldMid/80 hover:bg-emeraldLight text-goldRoyal text-xs font-semibold transition">
               <i class="fa-solid fa-language"></i>
               <span id="lang-label-desktop">हिन्दी / English</span>
             </button>
 
             <!-- Cart Trigger -->
-            <button onclick="toggleCart(true)" class="relative p-2 rounded-full bg-emeraldMid hover:bg-emeraldLight text-goldRoyal transition" aria-label="Shopping Cart">
+            <button type="button" onclick="toggleCart(true)" class="relative p-2 rounded-full bg-emeraldMid hover:bg-emeraldLight text-goldRoyal transition" aria-label="Shopping Cart">
               <i class="fa-solid fa-cart-shopping"></i>
               <span id="desktop-cart-badge" class="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">2</span>
             </button>
 
             <!-- Book Now Pill -->
-            <button onclick="openBookingModal('General Ziyarat & Travel Inquiry')" class="gold-gradient-btn text-emeraldDeep font-bold px-5 py-1.5 rounded-full text-sm shadow-gold-glow transition transform hover:-translate-y-0.5" data-i18n="bookNow">
+            <button type="button" onclick="openBookingModal('General Ziyarat & Travel Inquiry')" class="gold-gradient-btn text-emeraldDeep font-bold px-5 py-1.5 rounded-full text-sm shadow-gold-glow transition transform hover:-translate-y-0.5" data-i18n="bookNow">
               Book Now
             </button>
           </div>
@@ -201,13 +202,13 @@
 
         <!-- Mobile Right Controls -->
         <div class="flex lg:hidden items-center gap-2">
-          <button onclick="openPhotoModal()" aria-label="Customize Photos" class="p-2 rounded-full bg-emeraldMid text-goldRoyal border border-goldRoyal/40">
+          <button type="button" onclick="openPhotoModal()" aria-label="Customize Photos" class="p-2 rounded-full bg-emeraldMid text-goldRoyal border border-goldRoyal/40">
             <i class="fa-solid fa-camera text-sm"></i>
           </button>
-          <button onclick="toggleLanguage()" class="px-3 py-1 rounded-full border border-goldRoyal/80 text-goldRoyal text-xs font-semibold bg-emeraldMid">
+          <button type="button" onclick="toggleLanguage()" class="px-3 py-1 rounded-full border border-goldRoyal/80 text-goldRoyal text-xs font-semibold bg-emeraldMid">
             <span id="lang-label-mobile">हिन्दी</span> <i class="fa-solid fa-chevron-down text-[10px] ml-0.5"></i>
           </button>
-          <button onclick="toggleCart(true)" class="relative p-2 text-white hover:text-goldRoyal" aria-label="Cart">
+          <button type="button" onclick="toggleCart(true)" class="relative p-2 text-white hover:text-goldRoyal" aria-label="Cart">
             <i class="fa-solid fa-bell text-lg"></i>
             <span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-goldRoyal"></span>
           </button>
@@ -223,7 +224,7 @@
       <a href="#products" onclick="closeMobileMenu()" class="block px-3 py-2 rounded-lg text-white hover:bg-emeraldDeep">Sohan Halwa & Loban</a>
       <a href="#taxi" onclick="closeMobileMenu()" class="block px-3 py-2 rounded-lg text-white hover:bg-emeraldDeep">Taxi & Travel</a>
       <a href="#about" onclick="closeMobileMenu()" class="block px-3 py-2 rounded-lg text-white hover:bg-emeraldDeep">About Us</a>
-      <button onclick="closeMobileMenu(); openPhotoModal();" class="w-full text-left px-3 py-2 rounded-lg text-goldRoyal hover:bg-emeraldDeep font-semibold">
+      <button type="button" onclick="closeMobileMenu(); openPhotoModal();" class="w-full text-left px-3 py-2 rounded-lg text-goldRoyal hover:bg-emeraldDeep font-semibold">
         <i class="fa-solid fa-camera mr-2"></i>Customize Photos
       </button>
       <a href="#contact" onclick="closeMobileMenu()" class="block px-3 py-2 rounded-lg text-white hover:bg-emeraldDeep">Contact Us (+91 9667951217)</a>
@@ -234,7 +235,7 @@
   <section id="home" class="relative hero-bg text-white overflow-hidden min-h-[480px] sm:min-h-[540px]">
     <!-- Evening Illuminated Ajmer Sharif Dargah Backdrop -->
     <div class="absolute inset-0 z-0 pointer-events-none select-none">
-      <svg viewBox="0 0 1600 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true" class="w-full h-full">
+      <svg id="default-hero-dargah-svg" viewBox="0 0 1600 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true" class="w-full h-full">
         <defs>
           <radialGradient id="aerialNightAmbient" cx="70%" cy="45%" r="62%">
             <stop offset="0%" stop-color="#ffe285" stop-opacity="0.42"/>
@@ -300,5 +301,4 @@
         <!-- Courtyard & Festive Lights -->
         <polygon points="340,655 885,465 1560,575 1560,800 340,800" fill="#141e1a"/>
         <g fill="#fff8cc">
-          <circle cx="445" cy="175" r="2.2"/><circle cx="485" cy="166" r="2.2"/><circle cx="525" cy="157" r="2.2"/><circle cx="565" cy="148" r="2.2"/><circle cx="605" cy="139" r="2.2"/><circle cx="645" cy="130" r="2.2"/><circle cx="685" cy="121" r="2.2"/>
-          <circle cx="785" cy="115" r="2.4"/><c
+          <circle cx="445" cy="175" r="2.2"/><circle cx="485" cy="166" r="2.2"/><circle cx="525" cy="157" r="2.2"/><circle cx="565" cy="148" r="2.2"/><cir

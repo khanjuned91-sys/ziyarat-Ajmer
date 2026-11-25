@@ -37,7 +37,7 @@
     }
   </script>
   <style>
-    /* Custom subtle architectural pattern & scrollbars */
+    /* Subtle architectural dot pattern & custom utilities */
     .islamic-pattern {
       background-image: radial-gradient(rgba(247, 208, 96, 0.12) 1px, transparent 1px);
       background-size: 20px 20px;
@@ -51,7 +51,6 @@
     .gold-gradient-btn:hover {
       background: linear-gradient(135deg, #ffe58f 0%, #f0c23a 100%);
     }
-    /* Hide scrollbar for clean horizontal pills on mobile */
     .no-scrollbar::-webkit-scrollbar {
       display: none;
     }
@@ -63,15 +62,14 @@
 </head>
 <body class="bg-creamWarm text-slate-800 font-sans antialiased pb-20 md:pb-0">
 
-  <!-- Toast / Custom Notification Banner (Replaces alert()) -->
-  <div id="toast-container" class="fixed top-5 right-5 z-[100] flex flex-col gap-2 pointer-events-none"></div>
+  <!-- Non-Blocking Toast Notification Container -->
+  <div id="toast-container" class="fixed top-5 right-5 z-[110] flex flex-col gap-2 pointer-events-none"></div>
 
-  <!-- Top Brand & Navigation Header -->
+  <!-- TOP BRAND & NAVIGATION HEADER -->
   <header class="sticky top-0 z-50 bg-emeraldDeep text-white shadow-xl border-b border-goldRoyal/25">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <!-- Top Bar -->
       <div class="flex items-center justify-between py-3">
-        <!-- Mobile Menu Button -->
+        <!-- Mobile Menu Toggle -->
         <button id="mobile-menu-btn" aria-label="Open Navigation" class="lg:hidden p-2.5 rounded-xl text-goldRoyal hover:bg-emeraldMid transition">
           <i class="fa-solid fa-bars text-xl"></i>
         </button>
@@ -79,20 +77,14 @@
         <!-- Brand Logo with Golden Mosque Dome SVG -->
         <a href="#home" class="flex items-center gap-3 group">
           <div class="w-11 h-11 sm:w-12 sm:h-12 flex items-center justify-center shrink-0">
-            <!-- Custom Golden Dargah Dome & Minarets SVG -->
             <svg viewBox="0 0 100 85" class="w-full h-full drop-shadow-[0_2px_6px_rgba(247,208,96,0.45)] group-hover:scale-105 transition-transform">
-              <!-- Crescent & Spire -->
               <path d="M50 4 L50 15" stroke="#f7d060" stroke-width="2.5" stroke-linecap="round"/>
               <circle cx="50" cy="14" r="2.5" fill="#f7d060"/>
-              <!-- Main Dome -->
               <path d="M26 48 C26 26, 42 18, 50 15 C58 18, 74 26, 74 48 Z" fill="url(#domeGrad)"/>
-              <!-- Left Minaret -->
               <rect x="14" y="34" width="6" height="24" rx="1" fill="#e8b931"/>
               <path d="M13 34 L17 25 L21 34 Z" fill="#f7d060"/>
-              <!-- Right Minaret -->
               <rect x="80" y="34" width="6" height="24" rx="1" fill="#e8b931"/>
               <path d="M79 34 L83 25 L87 34 Z" fill="#f7d060"/>
-              <!-- Base & Arches -->
               <rect x="10" y="54" width="80" height="8" rx="2" fill="#f7d060"/>
               <path d="M6 66 Q50 56 94 66" stroke="#f7d060" stroke-width="3" fill="none" stroke-linecap="round"/>
               <defs>
@@ -114,62 +106,70 @@
         <div class="hidden lg:flex flex-col items-end gap-2">
           <!-- Top Utility Row -->
           <div class="flex items-center gap-4 text-sm">
-            <a href="https://wa.me/919667951217" target="_blank" class="flex items-center gap-2 text-white hover:text-goldRoyal font-semibold transition">
-              <span class="w-6 h-6 rounded-full bg-[#25D366] text-white flex items-center justify-center text-xs shadow">
-                <i class="fa-brands fa-whatsapp text-sm"></i>
-              </span>
+            <a href="tel:+919667951217" class="flex items-center gap-1.5 text-white/90 hover:text-goldRoyal font-medium transition">
+              <i class="fa-solid fa-phone text-goldRoyal text-xs"></i>
               <span>+91 9667951217</span>
             </a>
 
-            <!-- Language Toggle Pill -->
+            <a href="https://wa.me/919667951217" target="_blank" class="flex items-center gap-1.5 text-white hover:text-goldRoyal font-semibold transition">
+              <span class="w-6 h-6 rounded-full bg-[#25D366] text-white flex items-center justify-center text-xs shadow">
+                <i class="fa-brands fa-whatsapp text-sm"></i>
+              </span>
+              <span>WhatsApp</span>
+            </a>
+
+            <!-- Customize Photos Trigger -->
+            <button onclick="openPhotoModal()" class="flex items-center gap-1.5 px-3 py-1 rounded-full border border-goldRoyal/50 bg-emeraldMid/80 hover:bg-emeraldLight text-white text-xs font-semibold transition">
+              <i class="fa-solid fa-camera text-goldRoyal"></i>
+              <span>Customize Photos</span>
+            </button>
+
+            <!-- Hindi / English Language Toggle -->
             <button onclick="toggleLanguage()" class="flex items-center gap-1.5 px-3 py-1 rounded-full border border-goldRoyal/60 bg-emeraldMid/80 hover:bg-emeraldLight text-goldRoyal text-xs font-semibold transition">
               <i class="fa-solid fa-language"></i>
               <span id="lang-label-desktop">हिन्दी / English</span>
             </button>
 
-            <!-- Cart Button -->
+            <!-- Cart Trigger -->
             <button onclick="toggleCart(true)" class="relative p-2 rounded-full bg-emeraldMid hover:bg-emeraldLight text-goldRoyal transition" aria-label="Shopping Cart">
               <i class="fa-solid fa-cart-shopping"></i>
               <span id="desktop-cart-badge" class="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">2</span>
             </button>
 
-            <!-- Primary Golden Book Now Pill -->
+            <!-- Book Now Pill -->
             <button onclick="openBookingModal('General Ziyarat & Travel Inquiry')" class="gold-gradient-btn text-emeraldDeep font-bold px-5 py-1.5 rounded-full text-sm shadow-gold-glow transition transform hover:-translate-y-0.5" data-i18n="bookNow">
               Book Now
             </button>
           </div>
 
-          <!-- Main Nav Links Row -->
+          <!-- Main Navigation Menu -->
           <nav class="flex items-center gap-1 text-sm font-medium">
-            <a href="#home" class="nav-pill bg-goldRoyal text-emeraldDeep font-bold px-3.5 py-1 rounded-md transition" data-i18n="navHome">Home</a>
+            <a href="#home" class="bg-goldRoyal text-emeraldDeep font-bold px-3.5 py-1 rounded-md transition" data-i18n="navHome">Home</a>
 
-            <!-- Ziyarat Packages Dropdown -->
             <div class="relative group">
               <a href="#packages" class="flex items-center gap-1 px-3 py-1 rounded-md text-white/95 hover:text-goldRoyal transition">
                 <span data-i18n="navPackages">Ziyarat Packages</span>
                 <i class="fa-solid fa-chevron-down text-[10px] opacity-80"></i>
               </a>
               <div class="absolute left-0 mt-1 w-56 rounded-xl bg-white text-slate-800 shadow-2xl border border-goldRoyal/30 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 py-2 z-50">
-                <a href="#packages" onclick="filterPackages('all')" class="block px-4 py-2 text-sm hover:bg-creamSoft hover:text-emeraldDeep font-medium">1-Day Ajmer Sharif Ziyarat</a>
+                <a href="#packages" onclick="filterPackages('1day')" class="block px-4 py-2 text-sm hover:bg-creamSoft hover:text-emeraldDeep font-medium">1-Day Ajmer Sharif Ziyarat</a>
                 <a href="#packages" onclick="filterPackages('ajmer-pushkar')" class="block px-4 py-2 text-sm hover:bg-creamSoft hover:text-emeraldDeep font-medium">Ajmer & Pushkar Spiritual Tour</a>
                 <a href="#packages" onclick="filterPackages('vip')" class="block px-4 py-2 text-sm hover:bg-creamSoft hover:text-emeraldDeep font-medium">VIP Family Ziyarat & Chadar</a>
               </div>
             </div>
 
-            <!-- Hotels Dropdown -->
             <div class="relative group">
               <a href="#hotels" class="flex items-center gap-1 px-3 py-1 rounded-md text-white/95 hover:text-goldRoyal transition">
                 <span data-i18n="navHotels">Hotels</span>
                 <i class="fa-solid fa-chevron-down text-[10px] opacity-80"></i>
               </a>
-              <div class="absolute left-0 mt-1 w-52 rounded-xl bg-white text-slate-800 shadow-2xl border border-goldRoyal/30 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 py-2 z-50">
+              <div class="absolute left-0 mt-1 w-56 rounded-xl bg-white text-slate-800 shadow-2xl border border-goldRoyal/30 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 py-2 z-50">
                 <a href="#hotels" onclick="filterHotels('all')" class="block px-4 py-2 text-sm hover:bg-creamSoft hover:text-emeraldDeep font-medium">All Hotels Near Dargah</a>
                 <a href="#hotels" onclick="filterHotels('gate')" class="block px-4 py-2 text-sm hover:bg-creamSoft hover:text-emeraldDeep font-medium">Walking Distance (Dargah Gate)</a>
                 <a href="#hotels" onclick="filterHotels('family')" class="block px-4 py-2 text-sm hover:bg-creamSoft hover:text-emeraldDeep font-medium">Luxury & Family Suites</a>
               </div>
             </div>
 
-            <!-- Products Dropdown -->
             <div class="relative group">
               <a href="#products" class="flex items-center gap-1 px-3 py-1 rounded-md text-white/95 hover:text-goldRoyal transition">
                 <span data-i18n="navProducts">Products</span>
@@ -182,7 +182,6 @@
               </div>
             </div>
 
-            <!-- Taxi & Travel Dropdown -->
             <div class="relative group">
               <a href="#taxi" class="flex items-center gap-1 px-3 py-1 rounded-md text-white/95 hover:text-goldRoyal transition">
                 <span data-i18n="navTaxi">Taxi & Travel</span>
@@ -200,8 +199,11 @@
           </nav>
         </div>
 
-        <!-- Mobile Right Controls (Language Pill + Bell/Cart) -->
+        <!-- Mobile Right Controls -->
         <div class="flex lg:hidden items-center gap-2">
+          <button onclick="openPhotoModal()" aria-label="Customize Photos" class="p-2 rounded-full bg-emeraldMid text-goldRoyal border border-goldRoyal/40">
+            <i class="fa-solid fa-camera text-sm"></i>
+          </button>
           <button onclick="toggleLanguage()" class="px-3 py-1 rounded-full border border-goldRoyal/80 text-goldRoyal text-xs font-semibold bg-emeraldMid">
             <span id="lang-label-mobile">हिन्दी</span> <i class="fa-solid fa-chevron-down text-[10px] ml-0.5"></i>
           </button>
@@ -213,21 +215,25 @@
       </div>
     </div>
 
-    <!-- Mobile Slide-Down Menu Drawer -->
+    <!-- Mobile Navigation Drawer -->
     <div id="mobile-drawer" class="hidden lg:hidden bg-emeraldMid border-t border-goldRoyal/20 px-4 py-4 space-y-2">
       <a href="#home" onclick="closeMobileMenu()" class="block px-3 py-2 rounded-lg bg-goldRoyal text-emeraldDeep font-bold">Home</a>
       <a href="#packages" onclick="closeMobileMenu()" class="block px-3 py-2 rounded-lg text-white hover:bg-emeraldDeep">Ziyarat Packages</a>
       <a href="#hotels" onclick="closeMobileMenu()" class="block px-3 py-2 rounded-lg text-white hover:bg-emeraldDeep">Hotels Near Dargah</a>
       <a href="#products" onclick="closeMobileMenu()" class="block px-3 py-2 rounded-lg text-white hover:bg-emeraldDeep">Sohan Halwa & Loban</a>
       <a href="#taxi" onclick="closeMobileMenu()" class="block px-3 py-2 rounded-lg text-white hover:bg-emeraldDeep">Taxi & Travel</a>
+      <a href="#about" onclick="closeMobileMenu()" class="block px-3 py-2 rounded-lg text-white hover:bg-emeraldDeep">About Us</a>
+      <button onclick="closeMobileMenu(); openPhotoModal();" class="w-full text-left px-3 py-2 rounded-lg text-goldRoyal hover:bg-emeraldDeep font-semibold">
+        <i class="fa-solid fa-camera mr-2"></i>Customize Photos
+      </button>
       <a href="#contact" onclick="closeMobileMenu()" class="block px-3 py-2 rounded-lg text-white hover:bg-emeraldDeep">Contact Us (+91 9667951217)</a>
     </div>
   </header>
 
-  <!-- HERO BANNER SECTION -->
+  <!-- FULL-BLEED HERO SECTION -->
   <section id="home" class="relative hero-bg text-white overflow-hidden min-h-[480px] sm:min-h-[540px]">
-    <!-- Night-Illuminated Aerial Ajmer Sharif Dargah Scene -->
-    <div id="hero-dargah-backdrop" class="absolute inset-0 z-0 pointer-events-none select-none">
+    <!-- Evening Illuminated Ajmer Sharif Dargah Backdrop -->
+    <div class="absolute inset-0 z-0 pointer-events-none select-none">
       <svg viewBox="0 0 1600 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true" class="w-full h-full">
         <defs>
           <radialGradient id="aerialNightAmbient" cx="70%" cy="45%" r="62%">
@@ -256,53 +262,43 @@
             <stop offset="0%" stop-color="#041810" stop-opacity="0.98"/>
             <stop offset="36%" stop-color="#062419" stop-opacity="0.88"/>
             <stop offset="64%" stop-color="#083b27" stop-opacity="0.44"/>
-            <stop offset="100%" stop-color="#050d09" stop-opacity="0.12"/>
+            <stop offset="100%" stop-color="#050d09" stop-opacity="0.14"/>
           </linearGradient>
         </defs>
 
-        <!-- Deep Night Sky & Warm Aerial Illumination -->
         <rect width="1600" height="800" fill="#040b08"/>
         <rect width="1600" height="800" fill="url(#aerialNightAmbient)"/>
 
-        <!-- Surrounding Ajmer City Silhouettes & Warm Dusk Glow -->
-        <g id="surrounding-ajmer-buildings" opacity="0.72">
-          <polygon points="325,95 435,62 455,155 345,188" fill="#0d1713" stroke="#f7d060" stroke-width="1"/>
-          <rect x="358" y="108" width="12" height="14" rx="1" fill="#ffd966" opacity="0.55"/>
-          <rect x="382" y="101" width="12" height="14" rx="1" fill="#ffd966" opacity="0.4"/>
-          <polygon points="1135,55 1275,35 1295,165 1155,185" fill="#0d1713" stroke="#f7d060" stroke-width="1"/>
-          <rect x="1175" y="82" width="14" height="16" rx="1" fill="#ffd966" opacity="0.5"/>
-          <rect x="1205" y="76" width="14" height="16" rx="1" fill="#ffd966" opacity="0.65"/>
-        </g>
+        <!-- Upper Illuminated Courtyard Complex -->
+        <polygon points="410,165 735,95 750,235 425,315" fill="#111f19" stroke="#ffe58f" stroke-width="2.5"/>
+        <polygon points="420,255 745,175 748,205 423,285" fill="url(#aerialGreenLitBand)"/>
+        <path d="M465 245 L465 205 Q482 188 499 205 L499 237 Z" fill="#fff4bd" stroke="#f7d060" stroke-width="1.5"/>
+        <path d="M535 228 L535 188 Q552 171 569 188 L569 220 Z" fill="#fff4bd" stroke="#f7d060" stroke-width="1.5"/>
+        <path d="M605 211 L605 171 Q622 154 639 171 L639 203 Z" fill="#fff4bd" stroke="#f7d060" stroke-width="1.5"/>
+        <path d="M675 194 L675 154 Q692 137 709 154 L709 186 Z" fill="#fff4bd" stroke="#f7d060" stroke-width="1.5"/>
 
-        <!-- Upper Festive Illuminated Courtyard Complex -->
-        <g id="aerial-upper-gates">
-          <!-- Left Gallery Wall with Emerald & Gold Lights -->
-          <polygon points="410,165 735,95 750,235 425,315" fill="#111f19" stroke="#ffe58f" stroke-width="2.5"/>
-          <polygon points="420,255 745,175 748,205 423,285" fill="url(#aerialGreenLitBand)"/>
-          <path d="M465 245 L465 205 Q482 188 499 205 L499 237 Z" fill="#fff4bd" stroke="#f7d060" stroke-width="1.5" opacity="0.92"/>
-          <path d="M535 228 L535 188 Q552 171 569 188 L569 220 Z" fill="#fff4bd" stroke="#f7d060" stroke-width="1.5" opacity="0.92"/>
-          <path d="M605 211 L605 171 Q622 154 639 171 L639 203 Z" fill="#fff4bd" stroke="#f7d060" stroke-width="1.5" opacity="0.92"/>
-          <path d="M675 194 L675 154 Q692 137 709 154 L709 186 Z" fill="#fff4bd" stroke="#f7d060" stroke-width="1.5" opacity="0.92"/>
+        <polygon points="755,65 1125,95 1110,275 745,245" fill="url(#aerialGoldLitWall)"/>
+        <polygon points="765,40 1095,68 1090,115 760,88" fill="url(#aerialGreenLitBand)" stroke="#f7d060" stroke-width="1.5"/>
+        <path d="M795 225 L795 160 Q815 138 835 160 L835 228 Z" fill="#fff2ad" stroke="#ffe58f" stroke-width="2"/>
+        <path d="M865 231 L865 166 Q885 144 905 166 L905 234 Z" fill="#fff2ad" stroke="#ffe58f" stroke-width="2"/>
+        <path d="M935 237 L935 172 Q955 150 975 172 L975 240 Z" fill="#fff2ad" stroke="#ffe58f" stroke-width="2"/>
+        <path d="M1005 243 L1005 178 Q1025 156 1045 178 L1045 246 Z" fill="#fff2ad" stroke="#ffe58f" stroke-width="2"/>
 
-          <!-- Central Upper Pavilion Lit in Festive Gold & Green Trim -->
-          <polygon points="755,65 1125,95 1110,275 745,245" fill="url(#aerialGoldLitWall)"/>
-          <polygon points="765,40 1095,68 1090,115 760,88" fill="url(#aerialGreenLitBand)" stroke="#f7d060" stroke-width="1.5"/>
-          <!-- Upper Arched Windows -->
-          <path d="M795 225 L795 160 Q815 138 835 160 L835 228 Z" fill="#fff2ad" stroke="#ffe58f" stroke-width="2"/>
-          <path d="M865 231 L865 166 Q885 144 905 166 L905 234 Z" fill="#fff2ad" stroke="#ffe58f" stroke-width="2"/>
-          <path d="M935 237 L935 172 Q955 150 975 172 L975 240 Z" fill="#fff2ad" stroke="#ffe58f" stroke-width="2"/>
-          <path d="M1005 243 L1005 178 Q1025 156 1045 178 L1045 246 Z" fill="#fff2ad" stroke="#ffe58f" stroke-width="2"/>
+        <polygon points="1265,30 1545,10 1565,315 1280,335" fill="url(#aerialGoldLitWall)"/>
+        <path d="M1350 325 L1350 135 Q1415 65 1480 130 L1480 318 Z" fill="#26132e" stroke="#fff0a6" stroke-width="5"/>
 
-          <!-- Fairy Light String Accents Across Upper Facades -->
-          <g fill="#fff8cc">
-            <circle cx="445" cy="175" r="2.2"/><circle cx="485" cy="166" r="2.2"/><circle cx="525" cy="157" r="2.2"/><circle cx="565" cy="148" r="2.2"/><circle cx="605" cy="139" r="2.2"/><circle cx="645" cy="130" r="2.2"/><circle cx="685" cy="121" r="2.2"/>
-            <circle cx="785" cy="115" r="2.4"/><circle cx="835" cy="119" r="2.4"/><circle cx="885" cy="123" r="2.4"/><circle cx="935" cy="127" r="2.4"/><circle cx="985" cy="131" r="2.4"/><circle cx="1035" cy="135" r="2.4"/><circle cx="1085" cy="139" r="2.4"/>
-          </g>
-          <g fill="#6ee7b7" opacity="0.85">
-            <circle cx="465" cy="170" r="1.8"/><circle cx="545" cy="152" r="1.8"/><circle cx="625" cy="134" r="1.8"/>
-            <circle cx="810" cy="117" r="1.9"/><circle cx="910" cy="125" r="1.9"/><circle cx="1010" cy="133" r="1.9"/>
-          </g>
+        <!-- Central White-and-Gold Dome & Shrine -->
+        <polygon points="560,415 885,295 1225,405 915,575" fill="url(#aerialGoldLitWall)" stroke="#fff5c0" stroke-width="2.5"/>
+        <path d="M775 365 C775 230, 855 185, 905 168 C955 185, 1035 230, 1035 365 Z" fill="url(#aerialWhiteGoldDome)" stroke="#ffffff" stroke-width="2.5"/>
+        <path d="M830 365 C830 242, 872 192, 905 168" stroke="#e8b931" stroke-width="2.2" fill="none" opacity="0.78"/>
+        <path d="M905 365 L905 168" stroke="#f7d060" stroke-width="2.5" fill="none" opacity="0.82"/>
+        <path d="M980 365 C980 242, 938 192, 905 168" stroke="#e8b931" stroke-width="2.2" fill="none" opacity="0.78"/>
+        <line x1="905" y1="128" x2="905" y2="168" stroke="#fff0a6" stroke-width="4" stroke-linecap="round"/>
+        <circle cx="905" cy="154" r="6" fill="#fff0a6"/>
+        <path d="M895 124 A11 11 0 1 0 915 124 A8.5 8.5 0 1 1 895 124 Z" fill="#fff4bd"/>
 
-          <!-- Right Illuminated Archway Gate -->
-          <polygon points="1265,30 1545,10 1565,315 1280,335" fill="url(#aerialGoldLitWall)"/>
-          <path d="M1350 325 L1350 135 Q1415 65 1480 130 L1480 318 Z" fill="#26132e" stroke="#fff0a6" stroke-wi
+        <!-- Courtyard & Festive Lights -->
+        <polygon points="340,655 885,465 1560,575 1560,800 340,800" fill="#141e1a"/>
+        <g fill="#fff8cc">
+          <circle cx="445" cy="175" r="2.2"/><circle cx="485" cy="166" r="2.2"/><circle cx="525" cy="157" r="2.2"/><circle cx="565" cy="148" r="2.2"/><circle cx="605" cy="139" r="2.2"/><circle cx="645" cy="130" r="2.2"/><circle cx="685" cy="121" r="2.2"/>
+          <circle cx="785" cy="115" r="2.4"/><c

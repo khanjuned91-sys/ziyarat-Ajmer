@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
@@ -38,7 +37,7 @@
     }
   </script>
   <style>
-    /* Custom subtle architectural pattern & scrollbars */
+    /* Custom subtle architectural pattern, hero glow & scrollbars */
     .islamic-pattern {
       background-image: radial-gradient(rgba(247, 208, 96, 0.12) 1px, transparent 1px);
       background-size: 20px 20px;
@@ -52,7 +51,6 @@
     .gold-gradient-btn:hover {
       background: linear-gradient(135deg, #ffe58f 0%, #f0c23a 100%);
     }
-    /* Hide scrollbar for clean horizontal pills on mobile */
     .no-scrollbar::-webkit-scrollbar {
       display: none;
     }
@@ -64,13 +62,12 @@
 </head>
 <body class="bg-creamWarm text-slate-800 font-sans antialiased pb-20 md:pb-0">
 
-  <!-- Toast / Custom Notification Banner (Replaces alert()) -->
-  <div id="toast-container" class="fixed top-5 right-5 z-[100] flex flex-col gap-2 pointer-events-none"></div>
+  <!-- Toast / Custom Notification Banner (Non-blocking replacement for alert()) -->
+  <div id="toast-container" class="fixed top-5 right-5 z-[110] flex flex-col gap-2 pointer-events-none"></div>
 
   <!-- Top Brand & Navigation Header -->
   <header class="sticky top-0 z-50 bg-emeraldDeep text-white shadow-xl border-b border-goldRoyal/25">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <!-- Top Bar -->
       <div class="flex items-center justify-between py-3">
         <!-- Mobile Menu Button -->
         <button id="mobile-menu-btn" aria-label="Open Navigation" class="lg:hidden p-2.5 rounded-xl text-goldRoyal hover:bg-emeraldMid transition">
@@ -80,20 +77,14 @@
         <!-- Brand Logo with Golden Mosque Dome SVG -->
         <a href="#home" class="flex items-center gap-3 group">
           <div class="w-11 h-11 sm:w-12 sm:h-12 flex items-center justify-center shrink-0">
-            <!-- Custom Golden Dargah Dome & Minarets SVG -->
             <svg viewBox="0 0 100 85" class="w-full h-full drop-shadow-[0_2px_6px_rgba(247,208,96,0.45)] group-hover:scale-105 transition-transform">
-              <!-- Crescent & Spire -->
               <path d="M50 4 L50 15" stroke="#f7d060" stroke-width="2.5" stroke-linecap="round"/>
               <circle cx="50" cy="14" r="2.5" fill="#f7d060"/>
-              <!-- Main Dome -->
               <path d="M26 48 C26 26, 42 18, 50 15 C58 18, 74 26, 74 48 Z" fill="url(#domeGrad)"/>
-              <!-- Left Minaret -->
               <rect x="14" y="34" width="6" height="24" rx="1" fill="#e8b931"/>
               <path d="M13 34 L17 25 L21 34 Z" fill="#f7d060"/>
-              <!-- Right Minaret -->
               <rect x="80" y="34" width="6" height="24" rx="1" fill="#e8b931"/>
               <path d="M79 34 L83 25 L87 34 Z" fill="#f7d060"/>
-              <!-- Base & Arches -->
               <rect x="10" y="54" width="80" height="8" rx="2" fill="#f7d060"/>
               <path d="M6 66 Q50 56 94 66" stroke="#f7d060" stroke-width="3" fill="none" stroke-linecap="round"/>
               <defs>
@@ -113,7 +104,6 @@
 
         <!-- Desktop Navigation & Utility Actions -->
         <div class="hidden lg:flex flex-col items-end gap-2">
-          <!-- Top Utility Row -->
           <div class="flex items-center gap-4 text-sm">
             <a href="https://wa.me/919667951217" target="_blank" class="flex items-center gap-2 text-white hover:text-goldRoyal font-semibold transition">
               <span class="w-6 h-6 rounded-full bg-[#25D366] text-white flex items-center justify-center text-xs shadow">
@@ -121,6 +111,12 @@
               </span>
               <span>+91 9667951217</span>
             </a>
+
+            <!-- Photo Customizer Trigger -->
+            <button onclick="openPhotoModal()" class="flex items-center gap-1.5 px-3 py-1 rounded-full border border-goldRoyal/50 bg-emeraldMid/80 hover:bg-emeraldLight text-white hover:text-goldRoyal text-xs font-semibold transition">
+              <i class="fa-solid fa-camera text-goldRoyal"></i>
+              <span>Photos</span>
+            </button>
 
             <!-- Language Toggle Pill -->
             <button onclick="toggleLanguage()" class="flex items-center gap-1.5 px-3 py-1 rounded-full border border-goldRoyal/60 bg-emeraldMid/80 hover:bg-emeraldLight text-goldRoyal text-xs font-semibold transition">
@@ -144,20 +140,18 @@
           <nav class="flex items-center gap-1 text-sm font-medium">
             <a href="#home" class="nav-pill bg-goldRoyal text-emeraldDeep font-bold px-3.5 py-1 rounded-md transition" data-i18n="navHome">Home</a>
 
-            <!-- Ziyarat Packages Dropdown -->
             <div class="relative group">
               <a href="#packages" class="flex items-center gap-1 px-3 py-1 rounded-md text-white/95 hover:text-goldRoyal transition">
                 <span data-i18n="navPackages">Ziyarat Packages</span>
                 <i class="fa-solid fa-chevron-down text-[10px] opacity-80"></i>
               </a>
               <div class="absolute left-0 mt-1 w-56 rounded-xl bg-white text-slate-800 shadow-2xl border border-goldRoyal/30 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 py-2 z-50">
-                <a href="#packages" onclick="filterPackages('all')" class="block px-4 py-2 text-sm hover:bg-creamSoft hover:text-emeraldDeep font-medium">1-Day Ajmer Sharif Ziyarat</a>
+                <a href="#packages" onclick="filterPackages('1day')" class="block px-4 py-2 text-sm hover:bg-creamSoft hover:text-emeraldDeep font-medium">1-Day Ajmer Sharif Ziyarat</a>
                 <a href="#packages" onclick="filterPackages('ajmer-pushkar')" class="block px-4 py-2 text-sm hover:bg-creamSoft hover:text-emeraldDeep font-medium">Ajmer & Pushkar Spiritual Tour</a>
                 <a href="#packages" onclick="filterPackages('vip')" class="block px-4 py-2 text-sm hover:bg-creamSoft hover:text-emeraldDeep font-medium">VIP Family Ziyarat & Chadar</a>
               </div>
             </div>
 
-            <!-- Hotels Dropdown -->
             <div class="relative group">
               <a href="#hotels" class="flex items-center gap-1 px-3 py-1 rounded-md text-white/95 hover:text-goldRoyal transition">
                 <span data-i18n="navHotels">Hotels</span>
@@ -170,7 +164,6 @@
               </div>
             </div>
 
-            <!-- Products Dropdown -->
             <div class="relative group">
               <a href="#products" class="flex items-center gap-1 px-3 py-1 rounded-md text-white/95 hover:text-goldRoyal transition">
                 <span data-i18n="navProducts">Products</span>
@@ -183,7 +176,6 @@
               </div>
             </div>
 
-            <!-- Taxi & Travel Dropdown -->
             <div class="relative group">
               <a href="#taxi" class="flex items-center gap-1 px-3 py-1 rounded-md text-white/95 hover:text-goldRoyal transition">
                 <span data-i18n="navTaxi">Taxi & Travel</span>
@@ -201,7 +193,7 @@
           </nav>
         </div>
 
-        <!-- Mobile Right Controls (Language Pill + Bell/Cart) -->
+        <!-- Mobile Right Controls -->
         <div class="flex lg:hidden items-center gap-2">
           <button onclick="toggleLanguage()" class="px-3 py-1 rounded-full border border-goldRoyal/80 text-goldRoyal text-xs font-semibold bg-emeraldMid">
             <span id="lang-label-mobile">हिन्दी</span> <i class="fa-solid fa-chevron-down text-[10px] ml-0.5"></i>
@@ -221,13 +213,16 @@
       <a href="#hotels" onclick="closeMobileMenu()" class="block px-3 py-2 rounded-lg text-white hover:bg-emeraldDeep">Hotels Near Dargah</a>
       <a href="#products" onclick="closeMobileMenu()" class="block px-3 py-2 rounded-lg text-white hover:bg-emeraldDeep">Sohan Halwa & Loban</a>
       <a href="#taxi" onclick="closeMobileMenu()" class="block px-3 py-2 rounded-lg text-white hover:bg-emeraldDeep">Taxi & Travel</a>
+      <button onclick="closeMobileMenu(); openPhotoModal();" class="w-full text-left px-3 py-2 rounded-lg text-goldRoyal hover:bg-emeraldDeep font-semibold">
+        <i class="fa-solid fa-camera mr-2"></i>Customize / Upload Photos
+      </button>
       <a href="#contact" onclick="closeMobileMenu()" class="block px-3 py-2 rounded-lg text-white hover:bg-emeraldDeep">Contact Us (+91 9667951217)</a>
     </div>
   </header>
 
-  <!-- HERO BANNER SECTION -->
+  <!-- HERO BANNER SECTION WITH ILLUMINATED EVENING AJMER SHARIF DARGAH SCENE -->
   <section id="home" class="relative hero-bg text-white overflow-hidden min-h-[480px] sm:min-h-[540px]">
-    <!-- Night-Illuminated Aerial Ajmer Sharif Dargah Scene -->
+    <!-- Default Night-Illuminated Dargah Architectural Backdrop -->
     <div id="hero-dargah-backdrop" class="absolute inset-0 z-0 pointer-events-none select-none">
       <svg viewBox="0 0 1600 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true" class="w-full h-full">
         <defs>
@@ -261,12 +256,11 @@
           </linearGradient>
         </defs>
 
-        <!-- Deep Night Sky & Warm Aerial Illumination -->
         <rect width="1600" height="800" fill="#040b08"/>
         <rect width="1600" height="800" fill="url(#aerialNightAmbient)"/>
 
         <!-- Surrounding Ajmer City Silhouettes & Warm Dusk Glow -->
-        <g id="surrounding-ajmer-buildings" opacity="0.72">
+        <g opacity="0.72">
           <polygon points="325,95 435,62 455,155 345,188" fill="#0d1713" stroke="#f7d060" stroke-width="1"/>
           <rect x="358" y="108" width="12" height="14" rx="1" fill="#ffd966" opacity="0.55"/>
           <rect x="382" y="101" width="12" height="14" rx="1" fill="#ffd966" opacity="0.4"/>
@@ -276,8 +270,7 @@
         </g>
 
         <!-- Upper Festive Illuminated Courtyard Complex -->
-        <g id="aerial-upper-gates">
-          <!-- Left Gallery Wall with Emerald & Gold Lights -->
+        <g>
           <polygon points="410,165 735,95 750,235 425,315" fill="#111f19" stroke="#ffe58f" stroke-width="2.5"/>
           <polygon points="420,255 745,175 748,205 423,285" fill="url(#aerialGreenLitBand)"/>
           <path d="M465 245 L465 205 Q482 188 499 205 L499 237 Z" fill="#fff4bd" stroke="#f7d060" stroke-width="1.5" opacity="0.92"/>
@@ -285,16 +278,13 @@
           <path d="M605 211 L605 171 Q622 154 639 171 L639 203 Z" fill="#fff4bd" stroke="#f7d060" stroke-width="1.5" opacity="0.92"/>
           <path d="M675 194 L675 154 Q692 137 709 154 L709 186 Z" fill="#fff4bd" stroke="#f7d060" stroke-width="1.5" opacity="0.92"/>
 
-          <!-- Central Upper Pavilion Lit in Festive Gold & Green Trim -->
           <polygon points="755,65 1125,95 1110,275 745,245" fill="url(#aerialGoldLitWall)"/>
           <polygon points="765,40 1095,68 1090,115 760,88" fill="url(#aerialGreenLitBand)" stroke="#f7d060" stroke-width="1.5"/>
-          <!-- Upper Arched Windows -->
           <path d="M795 225 L795 160 Q815 138 835 160 L835 228 Z" fill="#fff2ad" stroke="#ffe58f" stroke-width="2"/>
           <path d="M865 231 L865 166 Q885 144 905 166 L905 234 Z" fill="#fff2ad" stroke="#ffe58f" stroke-width="2"/>
           <path d="M935 237 L935 172 Q955 150 975 172 L975 240 Z" fill="#fff2ad" stroke="#ffe58f" stroke-width="2"/>
           <path d="M1005 243 L1005 178 Q1025 156 1045 178 L1045 246 Z" fill="#fff2ad" stroke="#ffe58f" stroke-width="2"/>
 
-          <!-- Fairy Light String Accents Across Upper Facades -->
           <g fill="#fff8cc">
             <circle cx="445" cy="175" r="2.2"/><circle cx="485" cy="166" r="2.2"/><circle cx="525" cy="157" r="2.2"/><circle cx="565" cy="148" r="2.2"/><circle cx="605" cy="139" r="2.2"/><circle cx="645" cy="130" r="2.2"/><circle cx="685" cy="121" r="2.2"/>
             <circle cx="785" cy="115" r="2.4"/><circle cx="835" cy="119" r="2.4"/><circle cx="885" cy="123" r="2.4"/><circle cx="935" cy="127" r="2.4"/><circle cx="985" cy="131" r="2.4"/><circle cx="1035" cy="135" r="2.4"/><circle cx="1085" cy="139" r="2.4"/>
@@ -304,6 +294,1342 @@
             <circle cx="810" cy="117" r="1.9"/><circle cx="910" cy="125" r="1.9"/><circle cx="1010" cy="133" r="1.9"/>
           </g>
 
-          <!-- Right Illuminated Archway Gate -->
           <polygon points="1265,30 1545,10 1565,315 1280,335" fill="url(#aerialGoldLitWall)"/>
-          <path d="M1350 325 L1350 135 Q1415 65 1480 130 L1480 318 Z" fill="#26132e" stroke="#fff0a6" s
+          <path d="M1350 325 L1350 135 Q1415 65 1480 130 L1480 318 Z" fill="#26132e" stroke="#fff0a6" stroke-width="5"/>
+          <path d="M1370 322 L1370 150 Q1415 95 1460 145 L1460 315 Z" fill="#3d1b45" stroke="#f7d060" stroke-width="2.5"/>
+        </g>
+
+        <!-- Central White-and-Gold Dome & Golden Shrine Complex -->
+        <g>
+          <polygon points="560,415 885,295 1225,405 915,575" fill="url(#aerialGoldLitWall)" stroke="#fff5c0" stroke-width="2.5"/>
+          <polygon points="625,520 885,415 1175,515 915,645" fill="#eab829"/>
+          <path d="M725 460 L725 395 Q752 365 779 395 L779 440 Z" fill="#fff6c7" stroke="#ffe58f" stroke-width="2"/>
+          <path d="M795 435 L795 370 Q822 340 849 370 L849 415 Z" fill="#fff6c7" stroke="#ffe58f" stroke-width="2"/>
+          <path d="M955 435 L955 370 Q982 340 1009 370 L1009 415 Z" fill="#fff6c7" stroke="#ffe58f" stroke-width="2"/>
+          <path d="M1025 460 L1025 395 Q1052 365 1079 395 L1079 440 Z" fill="#fff6c7" stroke="#ffe58f" stroke-width="2"/>
+
+          <path d="M775 365 C775 230, 855 185, 905 168 C955 185, 1035 230, 1035 365 Z" fill="url(#aerialWhiteGoldDome)" stroke="#ffffff" stroke-width="2.5"/>
+          <path d="M830 365 C830 242, 872 192, 905 168" stroke="#e8b931" stroke-width="2.2" fill="none" opacity="0.78"/>
+          <path d="M905 365 L905 168" stroke="#f7d060" stroke-width="2.5" fill="none" opacity="0.82"/>
+          <path d="M980 365 C980 242, 938 192, 905 168" stroke="#e8b931" stroke-width="2.2" fill="none" opacity="0.78"/>
+
+          <line x1="905" y1="128" x2="905" y2="168" stroke="#fff0a6" stroke-width="4" stroke-linecap="round"/>
+          <circle cx="905" cy="154" r="6" fill="#fff0a6"/>
+          <circle cx="905" cy="140" r="4.5" fill="#fff8d6"/>
+          <path d="M895 124 A11 11 0 1 0 915 124 A8.5 8.5 0 1 1 895 124 Z" fill="#fff4bd"/>
+        </g>
+
+        <!-- Checkered Marble Courtyard & Crowds of Visitors at Night -->
+        <g>
+          <polygon points="340,655 885,465 1560,575 1560,800 340,800" fill="#141e1a"/>
+          <g opacity="0.9">
+            <polygon points="755,655 785,643 812,656 782,669" fill="#f8fafc"/>
+            <polygon points="812,656 842,644 869,657 839,670" fill="#0f172a"/>
+            <polygon points="725,672 755,660 782,673 752,686" fill="#0f172a"/>
+            <polygon points="782,673 812,661 839,674 809,687" fill="#f8fafc"/>
+            <polygon points="839,674 869,662 896,675 866,688" fill="#f8fafc"/>
+            <polygon points="695,690 725,678 752,691 722,704" fill="#f8fafc"/>
+            <polygon points="752,691 782,679 809,692 779,705" fill="#0f172a"/>
+            <polygon points="809,692 839,680 866,693 836,706" fill="#0f172a"/>
+          </g>
+          <g fill="#f8fafc" opacity="0.82">
+            <circle cx="480" cy="680" r="3"/><circle cx="505" cy="692" r="3"/><circle cx="535" cy="672" r="3"/><circle cx="565" cy="688" r="3"/>
+            <circle cx="885" cy="610" r="3"/><circle cx="920" cy="625" r="3"/><circle cx="955" cy="605" r="3"/><circle cx="990" cy="622" r="3"/>
+            <circle cx="1025" cy="608" r="3"/><circle cx="1060" cy="628" r="3"/><circle cx="1095" cy="612" r="3"/><circle cx="1130" cy="632" r="3"/>
+            <circle cx="1165" cy="615" r="3"/><circle cx="1200" cy="635" r="3"/><circle cx="1235" cy="618" r="3"/><circle cx="1270" cy="640" r="3"/>
+          </g>
+          <g fill="#f7d060" opacity="0.9">
+            <circle cx="492" cy="698" r="3.2"/><circle cx="522" cy="685" r="3.2"/><circle cx="552" cy="705" r="3.2"/><circle cx="582" cy="690" r="3.2"/>
+            <circle cx="902" cy="638" r="3.2"/><circle cx="938" cy="620" r="3.2"/><circle cx="972" cy="642" r="3.2"/><circle cx="1008" cy="625" r="3.2"/>
+            <circle cx="1042" cy="645" r="3.2"/><circle cx="1078" cy="628" r="3.2"/><circle cx="1112" cy="648" r="3.2"/><circle cx="1148" cy="632" r="3.2"/>
+          </g>
+        </g>
+
+        <rect width="1600" height="800" fill="url(#aerialLeftScrim)"/>
+      </svg>
+    </div>
+
+    <!-- Custom Uploaded Hero Image Layer (Populated if user uploads custom hero photo) -->
+    <img id="custom-hero-img" alt="Ajmer Sharif Dargah" class="hidden absolute inset-0 z-0 w-full h-full object-cover">
+    <div id="custom-hero-scrim" class="hidden absolute inset-0 z-[1] bg-gradient-to-r from-[#041810]/95 via-[#062419]/80 to-[#050d09]/25 pointer-events-none"></div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-28 sm:pt-16 sm:pb-36 lg:pt-20 lg:pb-40">
+      <div class="max-w-2xl">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emeraldDeep/80 border border-goldRoyal/40 text-goldRoyal text-xs sm:text-sm font-medium mb-4 backdrop-blur-sm">
+          <i class="fa-solid fa-star-and-crescent"></i>
+          <span data-i18n="heroBadge">Your Complete Ziyarat & Travel Partner</span>
+        </div>
+
+        <h1 class="font-playfair font-bold text-4xl sm:text-5xl lg:text-6xl leading-tight tracking-tight">
+          <span class="block text-white" data-i18n="heroWelcome">Welcome to</span>
+          <span class="block text-goldRoyal drop-shadow-[0_3px_12px_rgba(0,0,0,0.6)]" data-i18n="heroTitle">Ajmer Sharif</span>
+        </h1>
+
+        <p class="mt-3 text-base sm:text-xl text-white/90 font-medium" data-i18n="heroSubtitle">
+          Plan Your Journey with Ease...
+        </p>
+
+        <!-- 2x2 Golden Checkmark Feature List -->
+        <div class="mt-6 grid grid-cols-2 gap-x-4 gap-y-3 max-w-md text-sm sm:text-base font-medium">
+          <a href="#packages" class="flex items-center gap-2.5 text-white hover:text-goldRoyal transition">
+            <span class="w-5 h-5 rounded-full bg-goldRoyal text-emeraldDeep flex items-center justify-center text-xs font-bold shrink-0">
+              <i class="fa-solid fa-check"></i>
+            </span>
+            <span data-i18n="featPackage">Ziyarat Package</span>
+          </a>
+          <a href="#hotels" class="flex items-center gap-2.5 text-white hover:text-goldRoyal transition">
+            <span class="w-5 h-5 rounded-full bg-goldRoyal text-emeraldDeep flex items-center justify-center text-xs font-bold shrink-0">
+              <i class="fa-solid fa-check"></i>
+            </span>
+            <span data-i18n="featHotel">Hotel Booking</span>
+          </a>
+          <a href="#products" class="flex items-center gap-2.5 text-white hover:text-goldRoyal transition">
+            <span class="w-5 h-5 rounded-full bg-goldRoyal text-emeraldDeep flex items-center justify-center text-xs font-bold shrink-0">
+              <i class="fa-solid fa-check"></i>
+            </span>
+            <span data-i18n="featHalwa">Sohan Halwa</span>
+          </a>
+          <a href="#products" class="flex items-center gap-2.5 text-white hover:text-goldRoyal transition">
+            <span class="w-5 h-5 rounded-full bg-goldRoyal text-emeraldDeep flex items-center justify-center text-xs font-bold shrink-0">
+              <i class="fa-solid fa-check"></i>
+            </span>
+            <span data-i18n="featLoban">Loban</span>
+          </a>
+        </div>
+
+        <!-- Prominent Golden CTA & WhatsApp Buttons -->
+        <div class="mt-8 flex flex-wrap items-center gap-4">
+          <button onclick="openBookingModal('Ajmer Sharif Complete Ziyarat')" class="gold-gradient-btn text-emeraldDeep font-bold text-base sm:text-lg px-8 py-3.5 rounded-full shadow-gold-glow inline-flex items-center gap-2.5 transition transform hover:scale-105">
+            <span data-i18n="bookNow">Book Now</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+          <a href="https://wa.me/919667951217" target="_blank" class="px-6 py-3.5 rounded-full bg-emeraldDeep/85 hover:bg-emeraldDeep border border-goldRoyal/50 text-white font-semibold text-sm sm:text-base inline-flex items-center gap-2 backdrop-blur-sm transition">
+            <i class="fa-brands fa-whatsapp text-[#25D366] text-lg"></i>
+            <span>WhatsApp Assistance</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 OVERLAPPING SERVICE FEATURE CARDS + TRUST STRIP -->
+  <section class="relative z-20 -mt-20 sm:-mt-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+      <!-- Card 1: Ziyarat Package -->
+      <a href="#packages" class="group rounded-2xl overflow-hidden bg-white shadow-card-soft border-2 border-white hover:border-goldRoyal transition-all duration-300 transform hover:-translate-y-1.5">
+        <div class="h-36 sm:h-40 overflow-hidden relative bg-[#050c10]">
+          <svg id="card1-svg" viewBox="0 0 600 320" preserveAspectRatio="xMidYMid slice" aria-hidden="true" class="w-full h-full group-hover:scale-110 transition-transform duration-500">
+            <defs>
+              <radialGradient id="cardAerialGlow" cx="52%" cy="46%" r="58%">
+                <stop offset="0%" stop-color="#ffe285" stop-opacity="0.5"/>
+                <stop offset="55%" stop-color="#0a5e3c" stop-opacity="0.22"/>
+                <stop offset="100%" stop-color="#040b08" stop-opacity="0.96"/>
+              </radialGradient>
+              <radialGradient id="cardAerialDome" cx="50%" cy="30%" r="64%">
+                <stop offset="0%" stop-color="#ffffff"/>
+                <stop offset="42%" stop-color="#fff6c7"/>
+                <stop offset="82%" stop-color="#f5c336"/>
+                <stop offset="100%" stop-color="#784f03"/>
+              </radialGradient>
+            </defs>
+            <rect width="600" height="320" fill="#040b08"/>
+            <polygon points="95,55 495,35 510,135 110,155" fill="#f5c336" stroke="#fff3b8" stroke-width="1.5"/>
+            <polygon points="102,115 504,95 508,118 106,138" fill="#0a5e3c" opacity="0.85"/>
+            <polygon points="150,195 305,135 465,195 315,265" fill="#f7ca3e"/>
+            <path d="M245 165 C245 92, 285 68, 305 58 C325 68, 365 92, 365 165 Z" fill="url(#cardAerialDome)" stroke="#ffffff" stroke-width="2"/>
+            <line x1="305" y1="36" x2="305" y2="58" stroke="#fff0a6" stroke-width="3" stroke-linecap="round"/>
+            <circle cx="305" cy="48" r="2.8" fill="#fff8d6"/>
+            <polygon points="75,275 305,205 535,255 535,320 75,320" fill="#141e1a"/>
+            <g fill="#f8fafc" opacity="0.82">
+              <circle cx="145" cy="285" r="2.2"/><circle cx="180" cy="292" r="2.2"/><circle cx="220" cy="280" r="2.2"/><circle cx="260" cy="295" r="2.2"/>
+              <circle cx="345" cy="282" r="2.2"/><circle cx="385" cy="294" r="2.2"/><circle cx="425" cy="278" r="2.2"/><circle cx="465" cy="290" r="2.2"/>
+            </g>
+            <g fill="#f7d060" opacity="0.9">
+              <circle cx="162" cy="298" r="2.4"/><circle cx="200" cy="288" r="2.4"/><circle cx="240" cy="302" r="2.4"/><circle cx="280" cy="286" r="2.4"/>
+              <circle cx="365" cy="296" r="2.4"/><circle cx="405" cy="284" r="2.4"/><circle cx="445" cy="300" r="2.4"/><circle cx="485" cy="286" r="2.4"/>
+            </g>
+            <rect width="600" height="320" fill="url(#cardAerialGlow)"/>
+          </svg>
+          <img id="card1-custom-img" alt="Ziyarat Package" class="hidden w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+          <div class="absolute inset-0 bg-gradient-to-t from-emeraldDeep/75 via-transparent to-transparent"></div>
+        </div>
+        <div class="bg-emeraldMid group-hover:bg-emeraldDeep text-center py-3 px-4 transition-colors">
+          <h3 class="text-goldRoyal font-bold text-base sm:text-lg" data-i18n="card1Title">Ziyarat Package</h3>
+          <p class="text-white/90 text-xs sm:text-sm" data-i18n="card1Sub">Complete Dargha Tour</p>
+        </div>
+      </a>
+
+      <!-- Card 2: Hotel Booking -->
+      <a href="#hotels" class="group rounded-2xl overflow-hidden bg-white shadow-card-soft border-2 border-white hover:border-goldRoyal transition-all duration-300 transform hover:-translate-y-1.5">
+        <div class="h-36 sm:h-40 overflow-hidden relative">
+          <img id="card2-img" src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=700&q=80" alt="Hotel Booking" onerror="this.src='https://placehold.co/600x360/0c4b33/f7d060?text=Hotels+Near+Dargah'" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+          <div class="absolute inset-0 bg-gradient-to-t from-emeraldDeep/60 to-transparent"></div>
+        </div>
+        <div class="bg-emeraldMid group-hover:bg-emeraldDeep text-center py-3 px-4 transition-colors">
+          <h3 class="text-goldRoyal font-bold text-base sm:text-lg" data-i18n="card2Title">Hotel Booking</h3>
+          <p class="text-white/90 text-xs sm:text-sm" data-i18n="card2Sub">Stay in Comfort</p>
+        </div>
+      </a>
+
+      <!-- Card 3: Sohan Halwa (Ajmeri Sohan Halwa Platter) -->
+      <a href="#products" onclick="filterProducts('halwa')" class="group rounded-2xl overflow-hidden bg-white shadow-card-soft border-2 border-white hover:border-goldRoyal transition-all duration-300 transform hover:-translate-y-1.5">
+        <div class="h-36 sm:h-40 overflow-hidden relative bg-[#3a1608]">
+          <svg id="card3-svg" viewBox="0 0 600 320" preserveAspectRatio="xMidYMid slice" aria-label="Authentic Ajmeri Sohan Halwa Discs on Plate" class="w-full h-full group-hover:scale-110 transition-transform duration-500">
+            <defs>
+              <linearGradient id="redClothBg" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#c92a12"/>
+                <stop offset="55%" stop-color="#9e1b08"/>
+                <stop offset="100%" stop-color="#5c0d04"/>
+              </linearGradient>
+              <linearGradient id="tableSurface" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#eef0f2"/>
+                <stop offset="100%" stop-color="#cfd5dc"/>
+              </linearGradient>
+              <radialGradient id="halwaDiscGrad" cx="45%" cy="40%" r="60%">
+                <stop offset="0%" stop-color="#e39d52"/>
+                <stop offset="55%" stop-color="#b86b28"/>
+                <stop offset="100%" stop-color="#753d10"/>
+              </radialGradient>
+            </defs>
+            <!-- Warm Red Cloth & Light Surface -->
+            <rect width="600" height="320" fill="url(#redClothBg)"/>
+            <path d="M0 205 Q280 192 600 225 L600 320 L0 320 Z" fill="url(#tableSurface)"/>
+            <!-- Patterned Bowl of Nuts in Background -->
+            <rect x="445" y="18" width="110" height="118" rx="18" fill="#f8f6f0" stroke="#cbd5e1" stroke-width="2"/>
+            <path d="M447 72 L553 72 L553 106 L447 106 Z" fill="#1e4d40" opacity="0.88"/>
+            <ellipse cx="472" cy="89" rx="11" ry="13" fill="#f8f6f0"/>
+            <ellipse cx="500" cy="89" rx="11" ry="13" fill="#f8f6f0"/>
+            <ellipse cx="528" cy="89" rx="11" ry="13" fill="#f8f6f0"/>
+            <ellipse cx="485" cy="22" rx="14" ry="7" fill="#ebd2a0"/>
+            <ellipse cx="515" cy="20" rx="14" ry="7" fill="#f3dfb6"/>
+            <ellipse cx="536" cy="26" rx="12" ry="6" fill="#e5c68b"/>
+            <!-- White Ribbed Plate -->
+            <ellipse cx="265" cy="228" rx="225" ry="52" fill="#94a3b8" opacity="0.35"/>
+            <ellipse cx="265" cy="216" rx="222" ry="50" fill="#f4f3ef" stroke="#d6d3cb" stroke-width="2.5"/>
+            <ellipse cx="265" cy="212" rx="188" ry="38" fill="#faf9f6" stroke="#e5e2da" stroke-width="1.5"/>
+            <!-- Left Stacked Sohan Halwa Discs -->
+            <g transform="translate(115, 168)">
+              <ellipse cx="0" cy="22" rx="68" ry="26" fill="#6b350c"/>
+              <ellipse cx="0" cy="10" rx="68" ry="26" fill="url(#halwaDiscGrad)" stroke="#8f4e18" stroke-width="1.5"/>
+              <ellipse cx="0" cy="0" rx="68" ry="26" fill="url(#halwaDiscGrad)" stroke="#d9964e" stroke-width="1.5"/>
+              <ellipse cx="-44" cy="-2" rx="10" ry="5" transform="rotate(-25 -44 -2)" fill="#8b3e14"/>
+              <ellipse cx="-26" cy="-12" rx="10" ry="5" transform="rotate(-12 -26 -12)" fill="#9c4819"/>
+              <ellipse cx="0" cy="-15" rx="10" ry="5" fill="#8b3e14"/>
+              <ellipse cx="26" cy="-12" rx="10" ry="5" transform="rotate(14 26 -12)" fill="#9c4819"/>
+              <ellipse cx="45" cy="-2" rx="10" ry="5" transform="rotate(26 45 -2)" fill="#8b3e14"/>
+              <path d="M-12 2 Q0 -12 12 2 Q6 10 -12 2 Z" fill="#f5e1b5"/>
+              <polygon points="-16,-4 -7,-7 -5,-1 -14,1" fill="#68b046"/>
+              <polygon points="8,-4 17,-6 19,0 10,2" fill="#77c255"/>
+            </g>
+            <!-- Center Sohan Halwa Disc -->
+            <g transform="translate(245, 178)">
+              <ellipse cx="0" cy="14" rx="74" ry="28" fill="#6b350c"/>
+              <ellipse cx="0" cy="0" rx="74" ry="28" fill="url(#halwaDiscGrad)" stroke="#e09e56" stroke-width="1.8"/>
+              <ellipse cx="-48" cy="-3" rx="11" ry="5.5" transform="rotate(-28 -48 -3)" fill="#8b3e14"/>
+              <ellipse cx="-28" cy="-14" rx="11" ry="5.5" transform="rotate(-14 -28 -14)" fill="#9c4819"/>
+              <ellipse cx="0" cy="-17" rx="11" ry="5.5" fill="#8b3e14"/>
+              <ellipse cx="28" cy="-14" rx="11" ry="5.5" transform="rotate(14 28 -14)" fill="#9c4819"/>
+              <ellipse cx="48" cy="-3" rx="11" ry="5.5" transform="rotate(28 48 -3)" fill="#8b3e14"/>
+              <path d="M-14 2 Q0 -13 14 2 Q7 11 -14 2 Z" fill="#f7e6c0"/>
+              <polygon points="-18,-3 -8,-6 -6,0 -16,3" fill="#68b046"/>
+              <polygon points="9,-3 19,-6 21,0 11,3" fill="#77c255"/>
+            </g>
+            <!-- Right Front Sohan Halwa Disc -->
+            <g transform="translate(362, 184)">
+              <ellipse cx="0" cy="14" rx="72" ry="28" fill="#6b350c"/>
+              <ellipse cx="0" cy="0" rx="72" ry="28" fill="url(#halwaDiscGrad)" stroke="#e09e56" stroke-width="1.8"/>
+              <ellipse cx="-46" cy="-3" rx="10.5" ry="5" transform="rotate(-26 -46 -3)" fill="#8b3e14"/>
+              <ellipse cx="-26" cy="-13" rx="10.5" ry="5" transform="rotate(-12 -26 -13)" fill="#9c4819"/>
+              <ellipse cx="0" cy="-16" rx="10.5" ry="5" fill="#8b3e14"/>
+              <ellipse cx="26" cy="-13" rx="10.5" ry="5" transform="rotate(12 26 -13)" fill="#9c4819"/>
+              <ellipse cx="46" cy="-3" rx="10.5" ry="5" transform="rotate(26 46 -3)" fill="#8b3e14"/>
+              <path d="M-13 2 Q0 -12 13 2 Q6 10 -13 2 Z" fill="#f7e6c0"/>
+              <polygon points="-17,-3 -7,-6 -5,0 -15,3" fill="#68b046"/>
+              <polygon points="8,-3 18,-6 20,0 10,3" fill="#77c255"/>
+            </g>
+          </svg>
+          <img id="card3-custom-img" alt="Sohan Halwa" class="hidden w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+          <div class="absolute inset-0 bg-gradient-to-t from-emeraldDeep/65 via-transparent to-transparent"></div>
+        </div>
+        <div class="bg-emeraldMid group-hover:bg-emeraldDeep text-center py-3 px-4 transition-colors">
+          <h3 class="text-goldRoyal font-bold text-base sm:text-lg" data-i18n="card3Title">Sohan Halwa</h3>
+          <p class="text-white/90 text-xs sm:text-sm" data-i18n="card3Sub">Taste the Tradition</p>
+        </div>
+      </a>
+
+      <!-- Card 4: Loban & Items -->
+      <a href="#products" onclick="filterProducts('loban')" class="group rounded-2xl overflow-hidden bg-white shadow-card-soft border-2 border-white hover:border-goldRoyal transition-all duration-300 transform hover:-translate-y-1.5">
+        <div class="h-36 sm:h-40 overflow-hidden relative">
+          <img id="card4-img" src="https://images.unsplash.com/photo-1602928321679-560bb453f190?auto=format&fit=crop&w=700&q=80" alt="Loban & Items" onerror="this.src='https://placehold.co/600x360/0c4b33/f7d060?text=Pure+Loban+%26+Items'" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+          <div class="absolute inset-0 bg-gradient-to-t from-emeraldDeep/60 to-transparent"></div>
+        </div>
+        <div class="bg-emeraldMid group-hover:bg-emeraldDeep text-center py-3 px-4 transition-colors">
+          <h3 class="text-goldRoyal font-bold text-base sm:text-lg" data-i18n="card4Title">Loban & Items</h3>
+          <p class="text-white/90 text-xs sm:text-sm" data-i18n="card4Sub">Pure & Authentic</p>
+        </div>
+      </a>
+    </div>
+
+    <!-- Mobile App Quick-Access 6-Tile Grid -->
+    <div class="mt-6 md:hidden grid grid-cols-2 gap-3">
+      <a href="#packages" class="bg-white rounded-2xl p-4 shadow-sm border border-emeraldDeep/10 flex flex-col items-center text-center active:scale-95 transition">
+        <div class="w-12 h-12 rounded-full bg-emeraldDeep/10 text-emeraldDeep flex items-center justify-center text-2xl mb-2">
+          <i class="fa-solid fa-mosque"></i>
+        </div>
+        <span class="font-bold text-emeraldDeep text-sm">Ziyarat Package</span>
+      </a>
+      <a href="#hotels" class="bg-white rounded-2xl p-4 shadow-sm border border-emeraldDeep/10 flex flex-col items-center text-center active:scale-95 transition">
+        <div class="w-12 h-12 rounded-full bg-emeraldDeep/10 text-emeraldDeep flex items-center justify-center text-2xl mb-2">
+          <i class="fa-solid fa-bed"></i>
+        </div>
+        <span class="font-bold text-emeraldDeep text-sm">Hotels</span>
+      </a>
+      <a href="#products" onclick="filterProducts('halwa')" class="bg-white rounded-2xl p-4 shadow-sm border border-emeraldDeep/10 flex flex-col items-center text-center active:scale-95 transition">
+        <div class="w-12 h-12 rounded-full bg-emeraldDeep/10 text-emeraldDeep flex items-center justify-center text-2xl mb-2">
+          <i class="fa-solid fa-gift"></i>
+        </div>
+        <span class="font-bold text-emeraldDeep text-sm">Sohan Halwa</span>
+      </a>
+      <a href="#products" onclick="filterProducts('loban')" class="bg-white rounded-2xl p-4 shadow-sm border border-emeraldDeep/10 flex flex-col items-center text-center active:scale-95 transition">
+        <div class="w-12 h-12 rounded-full bg-emeraldDeep/10 text-emeraldDeep flex items-center justify-center text-2xl mb-2">
+          <i class="fa-solid fa-fire-flame-simple"></i>
+        </div>
+        <span class="font-bold text-emeraldDeep text-sm">Loban & Items</span>
+      </a>
+      <a href="#taxi" class="bg-white rounded-2xl p-4 shadow-sm border border-emeraldDeep/10 flex flex-col items-center text-center active:scale-95 transition">
+        <div class="w-12 h-12 rounded-full bg-emeraldDeep/10 text-emeraldDeep flex items-center justify-center text-2xl mb-2">
+          <i class="fa-solid fa-car"></i>
+        </div>
+        <span class="font-bold text-emeraldDeep text-sm">Taxi & Travel</span>
+      </a>
+      <button onclick="openPhotoModal()" class="bg-white rounded-2xl p-4 shadow-sm border border-emeraldDeep/10 flex flex-col items-center text-center active:scale-95 transition">
+        <div class="w-12 h-12 rounded-full bg-emeraldDeep/10 text-emeraldDeep flex items-center justify-center text-2xl mb-2">
+          <i class="fa-solid fa-camera"></i>
+        </div>
+        <span class="font-bold text-emeraldDeep text-sm">Upload Photos</span>
+      </button>
+    </div>
+
+    <!-- Trust & Feature Strip -->
+    <div class="mt-6 bg-white rounded-2xl shadow-sm border border-slate-200/80 px-4 py-4">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 divide-y lg:divide-y-0 lg:divide-x divide-slate-200">
+        <div class="flex items-center justify-center gap-3 px-3">
+          <div class="w-11 h-11 rounded-full bg-emeraldDeep/10 text-emeraldDeep flex items-center justify-center text-xl shrink-0">
+            <i class="fa-solid fa-plane-departure"></i>
+          </div>
+          <div>
+            <h4 class="font-bold text-emeraldDeep text-sm sm:text-base" data-i18n="trust1Title">Easy Booking</h4>
+            <p class="text-xs text-slate-500" data-i18n="trust1Sub">Worldwide</p>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-center gap-3 px-3 pt-3 lg:pt-0">
+          <div class="w-11 h-11 rounded-full bg-emeraldDeep/10 text-emeraldDeep flex items-center justify-center text-xl shrink-0">
+            <i class="fa-solid fa-shield-halved"></i>
+          </div>
+          <div>
+            <h4 class="font-bold text-emeraldDeep text-sm sm:text-base" data-i18n="trust2Title">Secure Payment</h4>
+            <p class="text-xs text-slate-500" data-i18n="trust2Sub">100% Safe</p>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-center gap-3 px-3 pt-3 lg:pt-0">
+          <div class="w-11 h-11 rounded-full bg-emeraldDeep/10 text-emeraldDeep flex items-center justify-center text-xl shrink-0">
+            <i class="fa-solid fa-headset"></i>
+          </div>
+          <div>
+            <h4 class="font-bold text-emeraldDeep text-sm sm:text-base" data-i18n="trust3Title">24x7 Support</h4>
+            <p class="text-xs text-slate-500" data-i18n="trust3Sub">Anytime</p>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-center gap-3 px-3 pt-3 lg:pt-0">
+          <div class="w-11 h-11 rounded-full bg-emeraldDeep/10 text-emeraldDeep flex items-center justify-center text-xl shrink-0">
+            <i class="fa-solid fa-globe"></i>
+          </div>
+          <div>
+            <h4 class="font-bold text-emeraldDeep text-sm sm:text-base" data-i18n="trust4Title">Multi Language</h4>
+            <p class="text-xs text-slate-500" data-i18n="trust4Sub">Hindi & English</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 1: CURATED ZIYARAT PACKAGES -->
+  <section id="packages" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
+      <div>
+        <span class="text-goldDark font-bold uppercase tracking-widest text-xs">Guided Spiritual Tours</span>
+        <h2 class="font-playfair font-bold text-3xl sm:text-4xl text-emeraldDeep mt-1">Curated Ziyarat Packages</h2>
+        <p class="text-slate-600 mt-1 text-sm sm:text-base">Hassle-free Khadim assistance, Chadar & Phool offerings, and local shrine tours.</p>
+      </div>
+      <div class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1">
+        <button onclick="filterPackages('all')" class="pkg-filter-btn active px-4 py-2 rounded-full text-xs sm:text-sm font-semibold bg-emeraldDeep text-goldRoyal transition">All Packages</button>
+        <button onclick="filterPackages('1day')" class="pkg-filter-btn px-4 py-2 rounded-full text-xs sm:text-sm font-semibold bg-white text-emeraldDeep border border-emeraldDeep/20 hover:bg-emeraldDeep/5 transition">1-Day Ajmer</button>
+        <button onclick="filterPackages('ajmer-pushkar')" class="pkg-filter-btn px-4 py-2 rounded-full text-xs sm:text-sm font-semibold bg-white text-emeraldDeep border border-emeraldDeep/20 hover:bg-emeraldDeep/5 transition">Ajmer & Pushkar</button>
+        <button onclick="filterPackages('vip')" class="pkg-filter-btn px-4 py-2 rounded-full text-xs sm:text-sm font-semibold bg-white text-emeraldDeep border border-emeraldDeep/20 hover:bg-emeraldDeep/5 transition">VIP Family</button>
+      </div>
+    </div>
+
+    <div id="packages-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+  </section>
+
+  <!-- SECTION 2: HOTELS NEAR DARGAH SHARIF -->
+  <section id="hotels" class="py-16 bg-creamSoft border-y border-emeraldDeep/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
+        <div>
+          <span class="text-goldDark font-bold uppercase tracking-widest text-xs">Comfortable & Clean Stays</span>
+          <h2 class="font-playfair font-bold text-3xl sm:text-4xl text-emeraldDeep mt-1">Hotels Near Dargah Gate</h2>
+          <p class="text-slate-600 mt-1 text-sm sm:text-base">Handpicked family-friendly hotels within walking distance of Nizam Gate & Dargah Bazar.</p>
+        </div>
+        <div class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1">
+          <button onclick="filterHotels('all')" class="hotel-filter-btn px-4 py-2 rounded-full text-xs sm:text-sm font-semibold bg-emeraldDeep text-goldRoyal transition">All Stays</button>
+          <button onclick="filterHotels('gate')" class="hotel-filter-btn px-4 py-2 rounded-full text-xs sm:text-sm font-semibold bg-white text-emeraldDeep border border-emeraldDeep/20 hover:bg-emeraldDeep/5 transition">Within 150m of Gate</button>
+          <button onclick="filterHotels('family')" class="hotel-filter-btn px-4 py-2 rounded-full text-xs sm:text-sm font-semibold bg-white text-emeraldDeep border border-emeraldDeep/20 hover:bg-emeraldDeep/5 transition">Luxury & Family Suites</button>
+        </div>
+      </div>
+
+      <div id="hotels-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: SOHAN HALWA & AUTHENTIC LOBAN STORE -->
+  <section id="products" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
+      <div>
+        <span class="text-goldDark font-bold uppercase tracking-widest text-xs">Tabarruk & Authentic Gifts</span>
+        <h2 class="font-playfair font-bold text-3xl sm:text-4xl text-emeraldDeep mt-1">Sohan Halwa & Authentic Loban</h2>
+        <p class="text-slate-600 mt-1 text-sm sm:text-base">Pure Desi Ghee Ajmeri Sohan Halwa, natural Loban Dhoop, Velvet Chadars & Attar delivered across India & abroad.</p>
+      </div>
+      <div class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1">
+        <button onclick="filterProducts('all')" class="prod-filter-btn px-4 py-2 rounded-full text-xs sm:text-sm font-semibold bg-emeraldDeep text-goldRoyal transition">All Products</button>
+        <button onclick="filterProducts('halwa')" class="prod-filter-btn px-4 py-2 rounded-full text-xs sm:text-sm font-semibold bg-white text-emeraldDeep border border-emeraldDeep/20 hover:bg-emeraldDeep/5 transition">Sohan Halwa</button>
+        <button onclick="filterProducts('loban')" class="prod-filter-btn px-4 py-2 rounded-full text-xs sm:text-sm font-semibold bg-white text-emeraldDeep border border-emeraldDeep/20 hover:bg-emeraldDeep/5 transition">Pure Loban</button>
+        <button onclick="filterProducts('religious')" class="prod-filter-btn px-4 py-2 rounded-full text-xs sm:text-sm font-semibold bg-white text-emeraldDeep border border-emeraldDeep/20 hover:bg-emeraldDeep/5 transition">Religious Items</button>
+      </div>
+    </div>
+
+    <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+  </section>
+
+  <!-- SECTION 4: TAXI & TRAVEL SERVICES + FARE CALCULATOR -->
+  <section id="taxi" class="py-16 bg-emeraldDeep text-white islamic-pattern relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        <div class="lg:col-span-6 space-y-5">
+          <span class="inline-block px-3.5 py-1 rounded-full bg-goldRoyal/15 border border-goldRoyal/40 text-goldRoyal text-xs font-bold uppercase tracking-wider">
+            24x7 Verified Chauffeurs
+          </span>
+          <h2 class="font-playfair font-bold text-3xl sm:text-4xl text-white">
+            Taxi & Travel Services in <span class="text-goldRoyal">Ajmer Sharif</span>
+          </h2>
+          <p class="text-white/85 text-sm sm:text-base leading-relaxed">
+            Seamless pickups from Ajmer Junction Railway Station, Kishangarh Airport, Jaipur Airport, and guided sightseeing to Taragarh Sharif, Adhai Din Ka Jhonpra, Ana Sagar Lake, and Pushkar.
+          </p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+            <div class="bg-emeraldMid/80 border border-goldRoyal/25 rounded-2xl p-4">
+              <div class="flex items-center gap-3 text-goldRoyal font-bold mb-1">
+                <i class="fa-solid fa-plane-arrival"></i>
+                <span>Airport & Station Pickup</span>
+              </div>
+              <p class="text-xs text-white/80">On-time Sedan, Ertiga & Innova Crysta transfers from Kishangarh & Jaipur Airport.</p>
+            </div>
+            <div class="bg-emeraldMid/80 border border-goldRoyal/25 rounded-2xl p-4">
+              <div class="flex items-center gap-3 text-goldRoyal font-bold mb-1">
+                <i class="fa-solid fa-route"></i>
+                <span>Local Ziyarat Sightseeing</span>
+              </div>
+              <p class="text-xs text-white/80">Full-day local darshan & ziyarat tour including Taragarh Hill & Pushkar.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Interactive Cab Fare Estimator -->
+        <div class="lg:col-span-6">
+          <div class="bg-white text-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl border-2 border-goldRoyal">
+            <h3 class="font-playfair font-bold text-2xl text-emeraldDeep mb-1">Instant Cab Fare Estimator</h3>
+            <p class="text-xs text-slate-500 mb-5">Select your route & vehicle type for instant transparent pricing.</p>
+
+            <div class="space-y-4">
+              <div>
+                <label class="block text-xs font-bold uppercase text-emeraldDeep mb-1.5">Select Trip Route</label>
+                <select id="cab-route" onchange="calculateCabFare()" class="w-full rounded-xl border border-slate-300 px-4 py-3 text-sm font-medium focus:outline-none focus:border-emeraldDeep bg-creamWarm">
+                  <option value="900">Ajmer Railway Station ↔ Dargah Hotel Drop</option>
+                  <option value="1600">Kishangarh Airport ↔ Ajmer Sharif Pickup/Drop</option>
+                  <option value="2200" selected>Full-Day Ajmer Local Sightseeing (Dargah, Taragarh, Ana Sagar)</option>
+                  <option value="2800">Ajmer + Pushkar Full Day Round Trip</option>
+                  <option value="3400">Jaipur Airport ↔ Ajmer Sharif Transfer</option>
+                </select>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-bold uppercase text-emeraldDeep mb-1.5">Vehicle Type</label>
+                  <select id="cab-vehicle" onchange="calculateCabFare()" class="w-full rounded-xl border border-slate-300 px-4 py-3 text-sm font-medium focus:outline-none focus:border-emeraldDeep bg-creamWarm">
+                    <option value="1">AC Sedan (Dzire / Etios - 4 Pax)</option>
+                    <option value="1.35">AC SUV (Ertiga / Carens - 6 Pax)</option>
+                    <option value="1.65">Innova Crysta (7 Pax Luxury)</option>
+                    <option value="2.3">Tempo Traveller (12-17 Pax)</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-xs font-bold uppercase text-emeraldDeep mb-1.5">Travel Date</label>
+                  <input type="date" id="cab-date" class="w-full rounded-xl border border-slate-300 px-4 py-2.5 text-sm font-medium focus:outline-none focus:border-emeraldDeep bg-creamWarm">
+                </div>
+              </div>
+
+              <div class="bg-creamSoft rounded-2xl p-4 flex items-center justify-between border border-goldRoyal/40">
+                <div>
+                  <span class="block text-xs text-slate-500 font-medium">Estimated All-Inclusive Fare</span>
+                  <span id="cab-fare-display" class="text-2xl sm:text-3xl font-extrabold text-emeraldDeep">₹2,200</span>
+                </div>
+                <button onclick="bookSelectedCab()" class="gold-gradient-btn text-emeraldDeep font-bold px-6 py-3 rounded-full text-sm shadow-md hover:shadow-lg transition">
+                  Book Cab <i class="fa-solid fa-arrow-right ml-1"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOWER 6 CIRCULAR FEATURE ICONS BANNER -->
+  <section id="about" class="bg-white py-12 border-t border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 text-center">
+        <div class="flex flex-col items-center group">
+          <div class="w-16 h-16 rounded-full bg-emeraldDeep text-goldRoyal flex items-center justify-center text-2xl shadow-md group-hover:scale-110 transition-transform">
+            <i class="fa-solid fa-plane-up"></i>
+          </div>
+          <p class="mt-3 font-bold text-emeraldDeep text-xs sm:text-sm leading-snug">Plan Your<br>Trip Easily</p>
+        </div>
+
+        <div class="flex flex-col items-center group">
+          <div class="w-16 h-16 rounded-full bg-emeraldDeep text-goldRoyal flex items-center justify-center text-2xl shadow-md group-hover:scale-110 transition-transform">
+            <i class="fa-solid fa-bed"></i>
+          </div>
+          <p class="mt-3 font-bold text-emeraldDeep text-xs sm:text-sm leading-snug">Book Hotels<br>Online</p>
+        </div>
+
+        <div class="flex flex-col items-center group">
+          <div class="w-16 h-16 rounded-full bg-emeraldDeep text-goldRoyal flex items-center justify-center text-2xl shadow-md group-hover:scale-110 transition-transform">
+            <i class="fa-solid fa-gift"></i>
+          </div>
+          <p class="mt-3 font-bold text-emeraldDeep text-xs sm:text-sm leading-snug">Buy Sohan Halwa<br>& Loban</p>
+        </div>
+
+        <div class="flex flex-col items-center group">
+          <div class="w-16 h-16 rounded-full bg-emeraldDeep text-goldRoyal flex items-center justify-center text-2xl shadow-md group-hover:scale-110 transition-transform">
+            <i class="fa-solid fa-taxi"></i>
+          </div>
+          <p class="mt-3 font-bold text-emeraldDeep text-xs sm:text-sm leading-snug">Taxi Service<br>in Ajmer</p>
+        </div>
+
+        <div class="flex flex-col items-center group">
+          <div class="w-16 h-16 rounded-full bg-emeraldDeep text-goldRoyal flex items-center justify-center text-2xl shadow-md group-hover:scale-110 transition-transform">
+            <i class="fa-solid fa-shield-heart"></i>
+          </div>
+          <p class="mt-3 font-bold text-emeraldDeep text-xs sm:text-sm leading-snug">Safe & Secure<br>Payments</p>
+        </div>
+
+        <div class="flex flex-col items-center group">
+          <div class="w-16 h-16 rounded-full bg-emeraldDeep text-goldRoyal flex items-center justify-center text-2xl shadow-md group-hover:scale-110 transition-transform">
+            <i class="fa-solid fa-earth-asia"></i>
+          </div>
+          <p class="mt-3 font-bold text-emeraldDeep text-xs sm:text-sm leading-snug">Service Across<br>India & Abroad</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="contact" class="bg-emeraldDeep text-white border-t-4 border-goldRoyal">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="flex flex-col lg:flex-row items-center justify-between gap-6">
+        <div class="flex flex-wrap items-center justify-center gap-3">
+          <button onclick="showToast('AJMER ZIYARAT Android App link sent!')" class="flex items-center gap-2.5 bg-black hover:bg-neutral-900 text-white px-4 py-2 rounded-xl border border-white/25 transition">
+            <i class="fa-brands fa-google-play text-2xl text-[#3bccff]"></i>
+            <div class="text-left leading-tight">
+              <span class="block text-[10px] uppercase tracking-wider text-white/75">GET IT ON</span>
+              <span class="block text-sm font-bold">Google Play</span>
+            </div>
+          </button>
+
+          <button onclick="showToast('AJMER ZIYARAT iOS App coming soon on App Store!')" class="flex items-center gap-2.5 bg-black hover:bg-neutral-900 text-white px-4 py-2 rounded-xl border border-white/25 transition">
+            <i class="fa-brands fa-apple text-2xl text-white"></i>
+            <div class="text-left leading-tight">
+              <span class="block text-[10px] text-white/75">Download on the</span>
+              <span class="block text-sm font-bold">App Store</span>
+            </div>
+          </button>
+        </div>
+
+        <a href="https://wa.me/919667951217" target="_blank" class="flex items-center gap-3 bg-emeraldMid hover:bg-emeraldLight border-2 border-goldRoyal/70 px-6 py-2.5 rounded-full shadow-gold-glow transition">
+          <span class="w-9 h-9 rounded-full bg-[#25D366] text-white flex items-center justify-center text-xl">
+            <i class="fa-brands fa-whatsapp"></i>
+          </span>
+          <span class="font-bold text-xl sm:text-2xl tracking-wide text-white">+91 9667951217</span>
+        </a>
+
+        <div class="flex flex-col sm:flex-row items-center gap-4 text-center sm:text-right">
+          <div class="flex items-center gap-2 text-white/95 font-semibold text-base">
+            <i class="fa-solid fa-location-dot text-goldRoyal text-xl"></i>
+            <span>Ajmer, Rajasthan</span>
+          </div>
+          <div class="bg-goldRoyal text-emeraldDeep px-5 py-2 rounded-2xl font-playfair italic font-bold text-sm sm:text-base shadow">
+            Visit Ajmer...<br class="hidden sm:inline"> With Complete Care...
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-8 pt-5 border-t border-white/15 flex flex-col sm:flex-row items-center justify-between text-xs text-white/70 gap-2">
+        <p>© 2026 AJMER ZIYARAT — Your Complete Ziyarat & Travel Partner. All Rights Reserved.</p>
+        <div class="flex gap-4">
+          <a href="#packages" class="hover:text-goldRoyal">Ziyarat Packages</a>
+          <a href="#hotels" class="hover:text-goldRoyal">Hotels</a>
+          <a href="#products" class="hover:text-goldRoyal">Sohan Halwa & Loban</a>
+          <a href="#taxi" class="hover:text-goldRoyal">Taxi Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- FLOATING WHATSAPP & CUSTOMIZE PHOTOS BUTTONS (Desktop & Tablet) -->
+  <div class="hidden md:flex fixed bottom-6 right-6 z-40 flex-col items-end gap-3">
+    <button onclick="openPhotoModal()" aria-label="Customize Photos" class="flex items-center gap-2 bg-emeraldDeep hover:bg-emeraldMid text-goldRoyal border border-goldRoyal/60 font-bold px-4 py-2.5 rounded-full shadow-xl transition transform hover:scale-105 text-xs">
+      <i class="fa-solid fa-camera text-sm"></i>
+      <span>Customize Photos</span>
+    </button>
+    <a href="https://wa.me/919667951217?text=Assalamu%20Alaikum%2C%20I%20want%20to%20enquire%20about%20Ajmer%20Ziyarat%20services." target="_blank" aria-label="Chat on WhatsApp" class="flex items-center gap-2.5 bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold px-5 py-3 rounded-full shadow-2xl transition transform hover:scale-105">
+      <i class="fa-brands fa-whatsapp text-2xl"></i>
+      <span class="text-sm">Chat With Us</span>
+    </a>
+  </div>
+
+  <!-- MOBILE APP STICKY BOTTOM NAVIGATION BAR -->
+  <nav class="md:hidden fixed bottom-0 inset-x-0 z-50 bg-emeraldDeep text-white border-t border-goldRoyal/30 shadow-[0_-4px_20px_rgba(0,0,0,0.25)]">
+    <div class="grid grid-cols-5 py-2 text-center text-[10px] font-medium">
+      <a href="#home" class="flex flex-col items-center justify-center text-goldRoyal font-bold">
+        <i class="fa-solid fa-house text-base mb-0.5"></i>
+        <span>Home</span>
+      </a>
+      <button onclick="openBookingModal('My Ziyarat Bookings')" class="flex flex-col items-center justify-center text-white/85 hover:text-goldRoyal">
+        <i class="fa-solid fa-calendar-check text-base mb-0.5"></i>
+        <span>Bookings</span>
+      </button>
+      <button onclick="toggleCart(true)" class="relative flex flex-col items-center justify-center text-white/85 hover:text-goldRoyal">
+        <div class="relative">
+          <i class="fa-solid fa-cart-shopping text-base mb-0.5"></i>
+          <span id="mobile-cart-badge" class="absolute -top-1.5 -right-2.5 bg-red-500 text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center">2</span>
+        </div>
+        <span>Cart</span>
+      </button>
+      <button onclick="openPhotoModal()" class="flex flex-col items-center justify-center text-white/85 hover:text-goldRoyal">
+        <i class="fa-solid fa-camera text-base mb-0.5"></i>
+        <span>Photos</span>
+      </button>
+      <a href="https://wa.me/919667951217" target="_blank" class="flex flex-col items-center justify-center text-white/85 hover:text-goldRoyal">
+        <i class="fa-solid fa-user text-base mb-0.5"></i>
+        <span>Profile</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- CUSTOM PHOTO UPLOADER & PREVIEW MODAL -->
+  <div id="photo-modal" class="fixed inset-0 z-[85] hidden items-center justify-center bg-black/75 backdrop-blur-sm p-4">
+    <div class="bg-white rounded-3xl max-w-xl w-full overflow-hidden shadow-2xl border-2 border-goldRoyal">
+      <div class="bg-emeraldDeep text-white px-6 py-4 flex items-center justify-between">
+        <div>
+          <span class="text-goldRoyal text-xs font-bold uppercase tracking-wider">Saved in Your Browser</span>
+          <h3 class="font-playfair font-bold text-xl">Upload Original Photos</h3>
+        </div>
+        <button onclick="closePhotoModal()" class="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="p-6 space-y-4 max-h-[75vh] overflow-y-auto">
+        <p class="text-xs sm:text-sm text-slate-600">
+          Select original photos from your phone or computer to replace any section visual with live preview and automatic saving.
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="border border-slate-200 rounded-2xl p-3.5 bg-creamWarm">
+            <label class="block text-xs font-bold uppercase text-emeraldDeep mb-2">Hero Dargah Background</label>
+            <input type="file" accept="image/*" onchange="handlePhotoUpload('hero', this)" class="block w-full text-xs text-slate-600 file:mr-2 file:py-1.5 file:px-3 file:rounded-full file:border-0 file:text-xs file:font-bold file:bg-emeraldDeep file:text-goldRoyal hover:file:bg-emeraldMid">
+          </div>
+
+          <div class="border border-slate-200 rounded-2xl p-3.5 bg-creamWarm">
+            <label class="block text-xs font-bold uppercase text-emeraldDeep mb-2">Sohan Halwa Card & Store</label>
+            <input type="file" accept="image/*" onchange="handlePhotoUpload('halwa', this)" class="block w-full text-xs text-slate-600 file:mr-2 file:py-1.5 file:px-3 file:rounded-full file:border-0 file:text-xs file:font-bold file:bg-emeraldDeep file:text-goldRoyal hover:file:bg-emeraldMid">
+          </div>
+
+          <div class="border border-slate-200 rounded-2xl p-3.5 bg-creamWarm">
+            <label class="block text-xs font-bold uppercase text-emeraldDeep mb-2">Ziyarat Package Card</label>
+            <input type="file" accept="image/*" onchange="handlePhotoUpload('ziyarat', this)" class="block w-full text-xs text-slate-600 file:mr-2 file:py-1.5 file:px-3 file:rounded-full file:border-0 file:text-xs file:font-bold file:bg-emeraldDeep file:text-goldRoyal hover:file:bg-emeraldMid">
+          </div>
+
+          <div class="border border-slate-200 rounded-2xl p-3.5 bg-creamWarm">
+            <label class="block text-xs font-bold uppercase text-emeraldDeep mb-2">Hotel Booking Card</label>
+            <input type="file" accept="image/*" onchange="handlePhotoUpload('hotel', this)" class="block w-full text-xs text-slate-600 file:mr-2 file:py-1.5 file:px-3 file:rounded-full file:border-0 file:text-xs file:font-bold file:bg-emeraldDeep file:text-goldRoyal hover:file:bg-emeraldMid">
+          </div>
+
+          <div class="border border-slate-200 rounded-2xl p-3.5 bg-creamWarm sm:col-span-2">
+            <label class="block text-xs font-bold uppercase text-emeraldDeep mb-2">Loban & Items Card</label>
+            <input type="file" accept="image/*" onchange="handlePhotoUpload('loban', this)" class="block w-full text-xs text-slate-600 file:mr-2 file:py-1.5 file:px-3 file:rounded-full file:border-0 file:text-xs file:font-bold file:bg-emeraldDeep file:text-goldRoyal hover:file:bg-emeraldMid">
+          </div>
+        </div>
+
+        <div class="pt-2 flex items-center justify-between gap-3 border-t border-slate-100">
+          <button type="button" onclick="resetCustomPhotos()" class="px-4 py-2.5 rounded-full border border-slate-300 text-slate-700 hover:bg-slate-100 text-xs font-bold transition">
+            Reset Default Visuals
+          </button>
+          <button type="button" onclick="closePhotoModal()" class="gold-gradient-btn text-emeraldDeep font-bold px-6 py-2.5 rounded-full text-xs sm:text-sm shadow">
+            Done
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INTERACTIVE BOOKING / INQUIRY MODAL -->
+  <div id="booking-modal" class="fixed inset-0 z-[70] hidden items-center justify-center bg-black/70 backdrop-blur-sm p-4">
+    <div class="bg-white rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl border-2 border-goldRoyal">
+      <div class="bg-emeraldDeep text-white px-6 py-4 flex items-center justify-between">
+        <div>
+          <span class="text-goldRoyal text-xs font-bold uppercase tracking-wider">Instant Confirmation</span>
+          <h3 id="modal-service-title" class="font-playfair font-bold text-xl">Book Ziyarat Service</h3>
+        </div>
+        <button onclick="closeBookingModal()" class="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <form onsubmit="submitBookingForm(event)" class="p-6 space-y-4">
+        <div>
+          <label class="block text-xs font-bold uppercase text-emeraldDeep mb-1">Full Name *</label>
+          <input type="text" id="book-name" required placeholder="Enter your full name" class="w-full rounded-xl border border-slate-300 px-4 py-2.5 text-sm focus:outline-none focus:border-emeraldDeep">
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-bold uppercase text-emeraldDeep mb-1">WhatsApp / Phone *</label>
+            <input type="tel" id="book-phone" required placeholder="+91 98XXXXXXXX" class="w-full rounded-xl border border-slate-300 px-4 py-2.5 text-sm focus:outline-none focus:border-emeraldDeep">
+          </div>
+          <div>
+            <label class="block text-xs font-bold uppercase text-emeraldDeep mb-1">Arrival Date *</label>
+            <input type="date" id="book-date" required class="w-full rounded-xl border border-slate-300 px-4 py-2.5 text-sm focus:outline-none focus:border-emeraldDeep">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-bold uppercase text-emeraldDeep mb-1">Number of Zaereen (Guests)</label>
+            <select id="book-guests" class="w-full rounded-xl border border-slate-300 px-4 py-2.5 text-sm focus:outline-none focus:border-emeraldDeep">
+              <option>1 - 2 Persons</option>
+              <option selected>3 - 5 Persons (Family)</option>
+              <option>6 - 10 Persons (Group)</option>
+              <option>10+ Persons (Large Group)</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-bold uppercase text-emeraldDeep mb-1">Selected Service</label>
+            <input type="text" id="book-service-input" readonly class="w-full rounded-xl border border-slate-200 bg-creamSoft px-4 py-2.5 text-sm font-semibold text-emeraldDeep">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold uppercase text-emeraldDeep mb-1">Special Requests (Optional)</label>
+          <textarea id="book-notes" rows="2" placeholder="Chadar offering, Deg Niyaz, wheelchair assistance, station pickup..." class="w-full rounded-xl border border-slate-300 px-4 py-2 text-sm focus:outline-none focus:border-emeraldDeep"></textarea>
+        </div>
+
+        <div class="pt-2 flex flex-col sm:flex-row gap-3">
+          <button type="submit" class="flex-1 gold-gradient-btn text-emeraldDeep font-bold py-3 rounded-full shadow-md hover:shadow-lg transition text-sm">
+            Confirm Booking Request
+          </button>
+          <a href="https://wa.me/919667951217" target="_blank" class="px-5 py-3 rounded-full bg-[#25D366] text-white font-bold text-sm text-center flex items-center justify-center gap-2">
+            <i class="fa-brands fa-whatsapp text-lg"></i> Direct WhatsApp
+          </a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- SLIDE-OUT SHOPPING CART DRAWER -->
+  <div id="cart-drawer-backdrop" onclick="toggleCart(false)" class="fixed inset-0 z-[80] hidden bg-black/60 backdrop-blur-xs"></div>
+  <aside id="cart-drawer" class="fixed top-0 right-0 bottom-0 z-[90] w-full max-w-md bg-white shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col">
+    <div class="bg-emeraldDeep text-white px-6 py-4 flex items-center justify-between border-b border-goldRoyal/30">
+      <div class="flex items-center gap-2.5">
+        <i class="fa-solid fa-bag-shopping text-goldRoyal text-xl"></i>
+        <h3 class="font-playfair font-bold text-xl">Your Tabarruk Cart</h3>
+      </div>
+      <button onclick="toggleCart(false)" class="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <div id="cart-items-list" class="flex-1 overflow-y-auto p-5 space-y-4"></div>
+
+    <div class="p-5 bg-creamSoft border-t border-slate-200 space-y-3">
+      <div class="flex items-center justify-between text-sm text-slate-600">
+        <span>Delivery (Pan-India & International Courier)</span>
+        <span class="font-semibold text-emeraldDeep">FREE</span>
+      </div>
+      <div class="flex items-center justify-between text-lg font-extrabold text-emeraldDeep">
+        <span>Total Amount</span>
+        <span id="cart-total-price">₹0</span>
+      </div>
+      <button onclick="checkoutCart()" class="w-full gold-gradient-btn text-emeraldDeep font-bold py-3.5 rounded-full shadow-gold-glow text-sm sm:text-base transition">
+        Proceed to Order <i class="fa-solid fa-arrow-right ml-1"></i>
+      </button>
+    </div>
+  </aside>
+
+  <!-- JAVASCRIPT DATA, PHOTO CUSTOMIZER & INTERACTIVITY -->
+  <script>
+    // 1. Bilingual Dictionary (English & Hindi)
+    const translations = {
+      en: {
+        bookNow: "Book Now",
+        navHome: "Home",
+        navPackages: "Ziyarat Packages",
+        navHotels: "Hotels",
+        navProducts: "Products",
+        navTaxi: "Taxi & Travel",
+        navAbout: "About Us",
+        navContact: "Contact Us",
+        heroBadge: "Your Complete Ziyarat & Travel Partner",
+        heroWelcome: "Welcome to",
+        heroTitle: "Ajmer Sharif",
+        heroSubtitle: "Plan Your Journey with Ease...",
+        featPackage: "Ziyarat Package",
+        featHotel: "Hotel Booking",
+        featHalwa: "Sohan Halwa",
+        featLoban: "Loban",
+        card1Title: "Ziyarat Package",
+        card1Sub: "Complete Dargha Tour",
+        card2Title: "Hotel Booking",
+        card2Sub: "Stay in Comfort",
+        card3Title: "Sohan Halwa",
+        card3Sub: "Taste the Tradition",
+        card4Title: "Loban & Items",
+        card4Sub: "Pure & Authentic",
+        trust1Title: "Easy Booking",
+        trust1Sub: "Worldwide",
+        trust2Title: "Secure Payment",
+        trust2Sub: "100% Safe",
+        trust3Title: "24x7 Support",
+        trust3Sub: "Anytime",
+        trust4Title: "Multi Language",
+        trust4Sub: "Hindi & English"
+      },
+      hi: {
+        bookNow: "अभी बुक करें",
+        navHome: "होम",
+        navPackages: "ज़ियारत पैकेज",
+        navHotels: "होटल बुकिंग",
+        navProducts: "सोहन हलवा व लोबान",
+        navTaxi: "टैक्सी और यात्रा",
+        navAbout: "हमारे बारे में",
+        navContact: "संपर्क करें",
+        heroBadge: "आपका संपूर्ण ज़ियारत और यात्रा साथी",
+        heroWelcome: "खुशामदीद",
+        heroTitle: "अजमेर शरीफ़",
+        heroSubtitle: "आसानी से अपनी ज़ियारत यात्रा की योजना बनाएं...",
+        featPackage: "ज़ियारत पैकेज",
+        featHotel: "होटल बुकिंग",
+        featHalwa: "सोहन हलवा",
+        featLoban: "लोबान",
+        card1Title: "ज़ियारत पैकेज",
+        card1Sub: "संपूर्ण दरगाह यात्रा",
+        card2Title: "होटल बुकिंग",
+        card2Sub: "आरामदायक ठहराव",
+        card3Title: "सोहन हलवा",
+        card3Sub: "असली परंपरा का स्वाद",
+        card4Title: "लोबान और सामग्री",
+        card4Sub: "शुद्ध और प्रामाणिक",
+        trust1Title: "आसान बुकिंग",
+        trust1Sub: "दुनिया भर से",
+        trust2Title: "सुरक्षित भुगतान",
+        trust2Sub: "100% सुरक्षित",
+        trust3Title: "24x7 सहायता",
+        trust3Sub: "हर समय उपलब्ध",
+        trust4Title: "बहुभाषी सेवा",
+        trust4Sub: "हिन्दी और अंग्रेज़ी"
+      }
+    };
+
+    let currentLang = 'en';
+
+    function toggleLanguage() {
+      currentLang = currentLang === 'en' ? 'hi' : 'en';
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[currentLang][key]) {
+          el.textContent = translations[currentLang][key];
+        }
+      });
+      document.getElementById('lang-label-desktop').textContent = currentLang === 'en' ? 'हिन्दी / English' : 'English / हिन्दी';
+      document.getElementById('lang-label-mobile').textContent = currentLang === 'en' ? 'हिन्दी' : 'English';
+      showToast(currentLang === 'hi' ? 'भाषा हिन्दी में बदल दी गई है' : 'Language switched to English');
+    }
+
+    // 2. Ajmeri Sohan Halwa Platter Artwork Data URI for Store Cards & Cart
+    const sohanHalwaPlatterArt = 'data:image/svg+xml;utf8,' + encodeURIComponent(`
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 380">
+        <defs>
+          <linearGradient id="cloth" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#c92a12"/>
+            <stop offset="55%" stop-color="#9e1b08"/>
+            <stop offset="100%" stop-color="#5c0d04"/>
+          </linearGradient>
+          <linearGradient id="table" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#eef0f2"/>
+            <stop offset="100%" stop-color="#cfd5dc"/>
+          </linearGradient>
+          <radialGradient id="disc" cx="45%" cy="40%" r="60%">
+            <stop offset="0%" stop-color="#e39d52"/>
+            <stop offset="55%" stop-color="#b86b28"/>
+            <stop offset="100%" stop-color="#753d10"/>
+          </radialGradient>
+        </defs>
+        <rect width="600" height="380" fill="url(#cloth)"/>
+        <path d="M0 245 Q280 230 600 268 L600 380 L0 380 Z" fill="url(#table)"/>
+        <rect x="448" y="22" width="112" height="132" rx="20" fill="#f8f6f0" stroke="#cbd5e1" stroke-width="2"/>
+        <path d="M450 82 L558 82 L558 120 L450 120 Z" fill="#1e4d40" opacity="0.88"/>
+        <ellipse cx="476" cy="101" rx="11" ry="14" fill="#f8f6f0"/>
+        <ellipse cx="504" cy="101" rx="11" ry="14" fill="#f8f6f0"/>
+        <ellipse cx="532" cy="101" rx="11" ry="14" fill="#f8f6f0"/>
+        <ellipse cx="488" cy="26" rx="15" ry="7.5" fill="#ebd2a0"/>
+        <ellipse cx="518" cy="24" rx="15" ry="7.5" fill="#f3dfb6"/>
+        <ellipse cx="538" cy="30" rx="13" ry="6.5" fill="#e5c68b"/>
+        <ellipse cx="265" cy="272" rx="232" ry="58" fill="#94a3b8" opacity="0.35"/>
+        <ellipse cx="265" cy="258" rx="228" ry="55" fill="#f4f3ef" stroke="#d6d3cb" stroke-width="2.5"/>
+        <ellipse cx="265" cy="253" rx="194" ry="42" fill="#faf9f6" stroke="#e5e2da" stroke-width="1.5"/>
+        <g transform="translate(115, 200)">
+          <ellipse cx="0" cy="24" rx="72" ry="28" fill="#6b350c"/>
+          <ellipse cx="0" cy="11" rx="72" ry="28" fill="url(#disc)" stroke="#8f4e18" stroke-width="1.5"/>
+          <ellipse cx="0" cy="0" rx="72" ry="28" fill="url(#disc)" stroke="#d9964e" stroke-width="1.5"/>
+          <ellipse cx="-46" cy="-2" rx="10.5" ry="5.2" transform="rotate(-25 -46 -2)" fill="#8b3e14"/>
+          <ellipse cx="-27" cy="-13" rx="10.5" ry="5.2" transform="rotate(-12 -27 -13)" fill="#9c4819"/>
+          <ellipse cx="0" cy="-16" rx="10.5" ry="5.2" fill="#8b3e14"/>
+          <ellipse cx="27" cy="-13" rx="10.5" ry="5.2" transform="rotate(14 27 -13)" fill="#9c4819"/>
+          <ellipse cx="47" cy="-2" rx="10.5" ry="5.2" transform="rotate(26 47 -2)" fill="#8b3e14"/>
+          <path d="M-13 2 Q0 -13 13 2 Q6 11 -13 2 Z" fill="#f5e1b5"/>
+          <polygon points="-17,-4 -7,-7 -5,-1 -15,1" fill="#68b046"/>
+          <polygon points="8,-4 18,-6 20,0 10,2" fill="#77c255"/>
+        </g>
+        <g transform="translate(248, 212)">
+          <ellipse cx="0" cy="15" rx="78" ry="30" fill="#6b350c"/>
+          <ellipse cx="0" cy="0" rx="78" ry="30" fill="url(#disc)" stroke="#e09e56" stroke-width="1.8"/>
+          <ellipse cx="-50" cy="-3" rx="11.5" ry="5.8" transform="rotate(-28 -50 -3)" fill="#8b3e14"/>
+          <ellipse cx="-29" cy="-15" rx="11.5" ry="5.8" transform="rotate(-14 -29 -15)" fill="#9c4819"/>
+          <ellipse cx="0" cy="-18" rx="11.5" ry="5.8" fill="#8b3e14"/>
+          <ellipse cx="29" cy="-15" rx="11.5" ry="5.8" transform="rotate(14 29 -15)" fill="#9c4819"/>
+          <ellipse cx="50" cy="-3" rx="11.5" ry="5.8" transform="rotate(28 50 -3)" fill="#8b3e14"/>
+          <path d="M-15 2 Q0 -14 15 2 Q7 12 -15 2 Z" fill="#f7e6c0"/>
+          <polygon points="-19,-3 -8,-6 -6,0 -17,3" fill="#68b046"/>
+          <polygon points="9,-3 20,-6 22,0 11,3" fill="#77c255"/>
+        </g>
+        <g transform="translate(368, 218)">
+          <ellipse cx="0" cy="15" rx="76" ry="30" fill="#6b350c"/>
+          <ellipse cx="0" cy="0" rx="76" ry="30" fill="url(#disc)" stroke="#e09e56" stroke-width="1.8"/>
+          <ellipse cx="-48" cy="-3" rx="11" ry="5.2" transform="rotate(-26 -48 -3)" fill="#8b3e14"/>
+          <ellipse cx="-27" cy="-14" rx="11" ry="5.2" transform="rotate(-12 -27 -14)" fill="#9c4819"/>
+          <ellipse cx="0" cy="-17" rx="11" ry="5.2" fill="#8b3e14"/>
+          <ellipse cx="27" cy="-14" rx="11" ry="5.2" transform="rotate(12 27 -14)" fill="#9c4819"/>
+          <ellipse cx="48" cy="-3" rx="11" ry="5.2" transform="rotate(26 48 -3)" fill="#8b3e14"/>
+          <path d="M-14 2 Q0 -13 14 2 Q6 11 -14 2 Z" fill="#f7e6c0"/>
+          <polygon points="-18,-3 -7,-6 -5,0 -16,3" fill="#68b046"/>
+          <polygon points="8,-3 19,-6 21,0 10,3" fill="#77c255"/>
+        </g>
+      </svg>
+    `);
+
+    // 3. Ziyarat Packages Data & Rendering
+    const packagesData = [
+      {
+        id: 'pkg1',
+        category: '1day',
+        badge: 'Most Popular',
+        title: '1-Day Ajmer Sharif Ziyarat',
+        duration: '1 Day • Complete Guidance',
+        price: '₹1,499',
+        unit: '/ person',
+        img: 'https://images.unsplash.com/photo-1587474260584-136574528ed5?auto=format&fit=crop&w=700&q=80',
+        inclusions: ['Dedicated Khadim Ziyarat Assistance', 'Velvet Chadar, Rose Petals & Itr', 'Adhai Din Ka Jhonpra & Ana Sagar Visit', '250g Original Ajmeri Sohan Halwa Box']
+      },
+      {
+        id: 'pkg2',
+        category: 'ajmer-pushkar',
+        badge: '2 Days / 1 Night',
+        title: 'Ajmer & Pushkar Spiritual Tour',
+        duration: '2 Days • Hotel + Cab Included',
+        price: '₹3,999',
+        unit: '/ person',
+        img: 'https://images.unsplash.com/photo-1599661046289-e31897846e41?auto=format&fit=crop&w=700&q=80',
+        inclusions: ['1 Night AC Room Near Dargah Gate', 'Private AC Cab for Ajmer & Pushkar', 'Taragarh Sharif Hill Ziyarat', 'Railway Station Pickup & Drop']
+      },
+      {
+        id: 'pkg3',
+        category: 'vip',
+        badge: 'Family & Group Special',
+        title: 'VIP Family Ziyarat & Deg Niyaz',
+        duration: '2 Days • All-Inclusive Comfort',
+        price: '₹6,499',
+        unit: '/ family (up to 4)',
+        img: 'https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=700&q=80',
+        inclusions: ['Luxury Family Suite (100m from Gate)', 'VIP Dargah Ziyarat & Special Dua', 'Chadar Offering + Pure Loban Hamper', 'Full-Day Innova Crysta Sightseeing']
+      }
+    ];
+
+    function renderPackages(filter = 'all') {
+      const grid = document.getElementById('packages-grid');
+      const filtered = filter === 'all' ? packagesData : packagesData.filter(p => p.category === filter);
+      grid.innerHTML = filtered.map(pkg => `
+        <div class="bg-white rounded-3xl overflow-hidden shadow-card-soft border border-emeraldDeep/10 flex flex-col justify-between hover:border-goldRoyal transition-all">
+          <div>
+            <div class="relative h-48 overflow-hidden">
+              <img src="${pkg.img}" alt="${pkg.title}" onerror="this.src='https://placehold.co/600x400/083b27/f7d060?text=Ajmer+Ziyarat'" class="w-full h-full object-cover">
+              <span class="absolute top-3 left-3 bg-emeraldDeep/90 text-goldRoyal text-xs font-bold px-3 py-1 rounded-full border border-goldRoyal/40">${pkg.badge}</span>
+            </div>
+            <div class="p-6">
+              <span class="text-xs font-semibold text-goldDark uppercase tracking-wider">${pkg.duration}</span>
+              <h3 class="font-playfair font-bold text-xl text-emeraldDeep mt-1">${pkg.title}</h3>
+              <ul class="mt-4 space-y-2 text-sm text-slate-600">
+                ${pkg.inclusions.map(item => `
+                  <li class="flex items-start gap-2">
+                    <i class="fa-solid fa-circle-check text-emeraldLight mt-1 text-xs"></i>
+                    <span>${item}</span>
+                  </li>
+                `).join('')}
+              </ul>
+            </div>
+          </div>
+          <div class="px-6 py-4 bg-creamSoft border-t border-slate-100 flex items-center justify-between">
+            <div>
+              <span class="text-2xl font-extrabold text-emeraldDeep">${pkg.price}</span>
+              <span class="text-xs text-slate-500">${pkg.unit}</span>
+            </div>
+            <button onclick="openBookingModal('${pkg.title}')" class="gold-gradient-btn text-emeraldDeep font-bold px-5 py-2.5 rounded-full text-xs sm:text-sm shadow hover:shadow-md transition">
+              Book Package
+            </button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function filterPackages(cat) {
+      document.querySelectorAll('.pkg-filter-btn').forEach(btn => {
+        btn.classList.remove('bg-emeraldDeep', 'text-goldRoyal');
+        btn.classList.add('bg-white', 'text-emeraldDeep');
+      });
+      if (typeof event !== 'undefined' && event && event.target && event.target.classList.contains('pkg-filter-btn')) {
+        event.target.classList.remove('bg-white', 'text-emeraldDeep');
+        event.target.classList.add('bg-emeraldDeep', 'text-goldRoyal');
+      }
+      renderPackages(cat);
+    }
+
+    // 4. Hotels Data & Rendering
+    const hotelsData = [
+      {
+        id: 'h1',
+        category: 'gate',
+        name: 'Hotel Khwaja Palace & Residency',
+        distance: '80 Meters from Nizam Gate',
+        rating: '4.8',
+        roomType: 'Deluxe AC Double / Family Room',
+        price: '₹1,650',
+        img: 'https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=700&q=80',
+        amenities: ['24x7 Hot Water', 'Free Wi-Fi', 'Elevator', 'Halal Room Dining']
+      },
+      {
+        id: 'h2',
+        category: 'gate',
+        name: 'Hotel Ajmer Sharif Inn',
+        distance: '120 Meters from Dargah Bazar',
+        rating: '4.7',
+        roomType: 'Executive AC Room',
+        price: '₹1,350',
+        img: 'https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=700&q=80',
+        amenities: ['AC & LED TV', '24x7 Front Desk', 'Doctor on Call', 'Clean Family Stay']
+      },
+      {
+        id: 'h3',
+        category: 'family',
+        name: 'The Royal Emerald Heritage Suites',
+        distance: '350 Meters from Dargah Sharif',
+        rating: '4.9',
+        roomType: '4-Bed Royal Family Suite',
+        price: '₹2,850',
+        img: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=700&q=80',
+        amenities: ['4-Bed Suite', 'Complimentary Breakfast', 'Valet Parking', 'Dargah View Terrace']
+      }
+    ];
+
+    function renderHotels(filter = 'all') {
+      const grid = document.getElementById('hotels-grid');
+      const filtered = filter === 'all' ? hotelsData : hotelsData.filter(h => h.category === filter);
+      grid.innerHTML = filtered.map(hotel => `
+        <div class="bg-white rounded-3xl overflow-hidden shadow-card-soft border border-emeraldDeep/10 flex flex-col justify-between hover:border-goldRoyal transition-all">
+          <div>
+            <div class="relative h-48 overflow-hidden">
+              <img src="${hotel.img}" alt="${hotel.name}" onerror="this.src='https://placehold.co/600x400/0c4b33/f7d060?text=Hotel+Stay'" class="w-full h-full object-cover">
+              <span class="absolute top-3 right-3 bg-emeraldDeep text-goldRoyal text-xs font-bold px-2.5 py-1 rounded-full flex items-center gap-1">
+                <i class="fa-solid fa-star"></i> ${hotel.rating}
+              </span>
+              <span class="absolute bottom-3 left-3 bg-black/75 text-white text-xs font-medium px-3 py-1 rounded-full backdrop-blur-xs">
+                <i class="fa-solid fa-person-walking text-goldRoyal mr-1"></i> ${hotel.distance}
+              </span>
+            </div>
+            <div class="p-6">
+              <h3 class="font-playfair font-bold text-xl text-emeraldDeep">${hotel.name}</h3>
+              <p class="text-xs font-semibold text-goldDark mt-1">${hotel.roomType}</p>
+              <div class="mt-4 flex flex-wrap gap-1.5">
+                ${hotel.amenities.map(a => `<span class="text-[11px] bg-creamSoft text-emeraldDeep font-medium px-2.5 py-1 rounded-lg border border-emeraldDeep/10">${a}</span>`).join('')}
+              </div>
+            </div>
+          </div>
+          <div class="px-6 py-4 bg-creamWarm border-t border-slate-100 flex items-center justify-between">
+            <div>
+              <span class="text-2xl font-extrabold text-emeraldDeep">${hotel.price}</span>
+              <span class="text-xs text-slate-500">/ night</span>
+            </div>
+            <button onclick="openBookingModal('Hotel: ${hotel.name}')" class="bg-emeraldDeep hover:bg-emeraldLight text-goldRoyal font-bold px-5 py-2.5 rounded-full text-xs sm:text-sm transition">
+              Book Room
+            </button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function filterHotels(cat) {
+      document.querySelectorAll('.hotel-filter-btn').forEach(btn => {
+        btn.classList.remove('bg-emeraldDeep', 'text-goldRoyal');
+        btn.classList.add('bg-white', 'text-emeraldDeep');
+      });
+      if (typeof event !== 'undefined' && event && event.target && event.target.classList.contains('hotel-filter-btn')) {
+        event.target.classList.remove('bg-white', 'text-emeraldDeep');
+        event.target.classList.add('bg-emeraldDeep', 'text-goldRoyal');
+      }
+      renderHotels(cat);
+    }
+
+    // 5. Sohan Halwa, Loban & Religious Products Store + Cart Logic
+    const productsData = [
+      {
+        id: 'prod1',
+        category: 'halwa',
+        name: 'Original Ajmeri Desi Ghee Sohan Halwa (1 Kg)',
+        subtitle: 'Ringed with Almonds, Cashews & Pistachios',
+        price: 650,
+        img: sohanHalwaPlatterArt
+      },
+      {
+        id: 'prod5',
+        category: 'halwa',
+        name: 'Royal Kesar Pista Sohan Halwa Gift Box (500g)',
+        subtitle: 'Traditional Ajmeri Halwa • Freshly Packed',
+        price: 360,
+        img: sohanHalwaPlatterArt
+      },
+      {
+        id: 'prod2',
+        category: 'loban',
+        name: 'Pure Sambrani & Guggal Loban Resin (500g)',
+        subtitle: '100% Natural Aromatic Dhoop from Ajmer',
+        price: 380,
+        img: 'https://images.unsplash.com/photo-1602928321679-560bb453f190?auto=format&fit=crop&w=600&q=80'
+      },
+      {
+        id: 'prod3',
+        category: 'religious',
+        name: 'Embroidered Velvet Dargah Chadar & Ghilaf',
+        subtitle: 'Golden Zari Work • Spiritual Offering',
+        price: 850,
+        img: 'https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?auto=format&fit=crop&w=600&q=80'
+      },
+      {
+        id: 'prod4',
+        category: 'religious',
+        name: 'Royal Ruh Gulab Attar & 100-Bead Tasbih Set',
+        subtitle: 'Alcohol-Free Pure Ittar Gift Box',
+        price: 450,
+        img: 'https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=600&q=80'
+      }
+    ];
+
+    let cart = [
+      { ...productsData[0], qty: 1 },
+      { ...productsData[1], qty: 1 }
+    ];
+
+    function renderProducts(filter = 'all') {
+      const grid = document.getElementById('products-grid');
+      const filtered = filter === 'all' ? productsData : productsData.filter(p => p.category === filter);
+      grid.innerHTML = filtered.map(prod => `
+        <div class="bg-white rounded-3xl overflow-hidden shadow-card-soft border border-emeraldDeep/10 flex flex-col justify-between hover:border-goldRoyal transition-all">
+          <div>
+            <div class="h-44 overflow-hidden relative">
+              <img src="${prod.img}" alt="${prod.name}" onerror="this.src='https://placehold.co/500x360/083b27/f7d060?text=Ajmer+Tabarruk'" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+            </div>
+            <div class="p-5">
+              <h3 class="font-bold text-emeraldDeep text-base leading-snug">${prod.name}</h3>
+              <p class="text-xs text-slate-500 mt-1">${prod.subtitle}</p>
+            </div>
+          </div>
+          <div class="px-5 py-4 bg-creamSoft border-t border-slate-100 flex items-center justify-between">
+            <span class="text-xl font-extrabold text-emeraldDeep">₹${prod.price}</span>
+            <button onclick="addToCart('${prod.id}')" class="gold-gradient-btn text-emeraldDeep font-bold px-4 py-2 rounded-full text-xs shadow hover:shadow-md transition flex items-center gap-1.5">
+              <i class="fa-solid fa-cart-plus"></i> Add to Cart
+            </button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function filterProducts(cat) {
+      document.querySelectorAll('.prod-filter-btn').forEach(btn => {
+        btn.classList.remove('bg-emeraldDeep', 'text-goldRoyal');
+        btn.classList.add('bg-white', 'text-emeraldDeep');
+      });
+      if (typeof event !== 'undefined' && event && event.target && event.target.classList.contains('prod-filter-btn')) {
+        event.target.classList.remove('bg-white', 'text-emeraldDeep');
+        event.target.classList.add('bg-emeraldDeep', 'text-goldRoyal');
+      }
+      renderProducts(cat);
+    }
+
+    function addToCart(productId) {
+      const prod = productsData.find(p => p.id === productId);
+      if (!prod) return;
+      const existing = cart.find(item => item.id === productId);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({ ...prod, qty: 1 });
+      }
+      updateCartUI();
+      showToast(`Added "${prod.name}" to cart!`);
+    }
+
+    function updateQty(productId, delta) {
+      const item = cart.find(i => i.id === productId);
+      if (!item) return;
+      item.qty += delta;
+      if (item.qty <= 0) {
+        cart = cart.filter(i => i.id !== productId);
+      }
+      updateCartUI();
+    }
+
+    function updateCartUI() {
+      const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+      const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+
+      document.getElementById('desktop-cart-badge').textContent = totalItems;
+      document.getElementById('mobile-cart-badge').textContent = totalItems;
+      document.getElementById('cart-total-price').textContent = `₹${totalPrice.toLocaleString('en-IN')}`;
+
+      const list = document.getElementById('cart-items-list');
+      if (cart.length === 0) {
+        list.innerHTML = `
+          <div class="text-center py-12 text-slate-400">
+            <i class="fa-solid fa-basket-shopping text-4xl mb-3 text-emeraldDeep/30"></i>
+            <p class="font-medium">Your cart is empty.</p>
+            <p class="text-xs mt-1">Add Sohan Halwa or Pure Loban to get started.</p>
+          </div>
+        `;
+        return;
+      }
+
+      list.innerHTML = cart.map(item => `
+        <div class="flex items-center gap-3.5 bg-creamWarm p-3 rounded-2xl border border-slate-200">
+          <img src="${item.img}" alt="${item.name}" class="w-16 h-16 rounded-xl object-cover shrink-0">
+          <div class="flex-1 min-w-0">
+            <h4 class="font-bold text-emeraldDeep text-sm truncate">${item.name}</h4>
+            <p class="text-xs font-semibold text-goldDark mt-0.5">₹${item.price} each</p>
+            <div class="mt-2 inline-flex items-center gap-2 bg-white border border-slate-200 rounded-full px-2 py-0.5">
+              <button onclick="updateQty('${item.id}', -1)" class="w-5 h-5 text-xs font-bold text-emeraldDeep hover:bg-slate-100 rounded-full">-</button>
+              <span class="text-xs font-bold px-1">${item.qty}</span>
+              <button onclick="updateQty('${item.id}', 1)" class="w-5 h-5 text-xs font-bold text-emeraldDeep hover:bg-slate-100 rounded-full">+</button>
+            </div>
+          </div>
+          <div class="text-right font-extrabold text-emeraldDeep text-sm">
+            ₹${(item.price * item.qty).toLocaleString('en-IN')}
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function toggleCart(open) {
+      const drawer = document.getElementById('cart-drawer');
+      const backdrop = document.getElementById('cart-drawer-backdrop');
+      if (open) {
+        backdrop.classList.remove('hidden');
+        drawer.classList.remove('translate-x-full');
+      } else {
+        backdrop.classList.add('hidden');
+        drawer.classList.add('translate-x-full');
+      }
+    }
+
+    function checkoutCart() {
+      if (cart.length === 0) {
+        showToast('Please add items to your cart first.');
+        return;
+      }
+      const summary = cart.map(i => `${i.name} (x${i.qty})`).join(', ');
+      toggleCart(false);
+      openBookingModal(`Tabarruk Order: ${summary}`);
+    }
+
+    // 6. Cab Fare Calculator & Booking
+    function calculateCabFare() {
+      const base = parseFloat(document.getElementById('cab-route').value);
+      const mult = parseFloat(document.getElementById('cab-vehicle').value);
+      const total = Math.round((base * mult) / 50) * 50;
+      document.getElementById('cab-fare-display').textContent = `₹${total.toLocaleString('en-IN')}`;
+    }
+
+    function bookSelectedCab() {
+      const routeText = document.getElementById('cab-route').selectedOptions[0].text;
+      const vehText = document.getElementById('cab-vehicle').selectedOptions[0].text;
+      const fare = document.getElementById('cab-fare-display').textContent;
+      openBookingModal(`Cab: ${routeText} (${vehText}) - ${fare}`);
+    }
+
+    // 7. Custom Photo Uploader (FileReader + Canvas Compression + localStorage)
+    const PHOTO_STORAGE_KEY = 'ajmer_ziyarat_custom_photos_v1';
+
+    function openPhotoModal() {
+      const modal = document.getElementById('photo-modal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closePhotoModal() {
+      const modal = document.getElementById('photo-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    function compressDataUrl(dataUrl, maxWidth = 1280, quality = 0.82) {
+      return new Promise(resolve => {
+        const img = new Image();
+        img.onload = () => {
+          const scale = Math.min(1, maxWidth / img.width);
+          const canvas = document.createElement('canvas');
+          canvas.width = Math.max(1, Math.round(img.width * scale));
+          canvas.height = Math.max(1, Math.round(img.height * scale));
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+          try {
+            resolve(canvas.toDataURL('image/jpeg', quality));
+          } catch (err) {
+      
